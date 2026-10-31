@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Participar | Acreditar no Montijo!</title>
+<meta name="description" content="Como apoiar o movimento Acreditar no Montijo!, aderir ao PSD e ter as quotas em dia.">
+<link rel="canonical" href="https://www.acreditarnomontijo.pt/participar.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:site_name" content="Acreditar no Montijo!">
+<meta property="og:title" content="Participar">
+<meta property="og:description" content="Como apoiar o movimento Acreditar no Montijo!, aderir ao PSD e ter as quotas em dia.">
+<meta property="og:url" content="https://www.acreditarnomontijo.pt/participar.html">
+<meta property="og:image" content="https://www.acreditarnomontijo.pt/assets/partilha.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0D2B4E">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icone-180.png">
+<link rel="preload" href="assets/fonts/barlow-condensed-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/source-serif-4-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="saltar" href="#conteudo">Saltar para o conteúdo</a>
+<header class="topo">
+  <div class="contentor">
+    <a class="marca" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M2 17 30 5v7L2 24Z" fill="#E87722"/><path d="M2 25.5 30 13.5v5L2 30.5Z" fill="#4F80C2"/></svg><span>Acreditar no Montijo!</span></a>
+    <nav class="menu" aria-label="Principal">
+      <ul><li><a href="movimento.html">Movimento</a></li><li><a href="contactos.html">Contactos</a></li></ul>
+    </nav>
+    <a class="botao botao-topo" href="participar.html" aria-current="page">Participar</a>
+  </div>
+</header>
+<main id="conteudo">
+<section class="abertura abertura-pagina">
+  <div class="contentor">
+    
+    <h1>Participar</h1>
+    <p class="entrada">Há três formas de ajudar. Escolhe a tua.</p>
+  </div>
+</section>
+<svg class="faixa faixa-entrada" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="f-noite" x="0" y="0" width="1440" height="2"/><polygon class="f-noite" points="0,0 1440,0 1440,8 0,64"/><polygon class="f-laranja" points="0,64 1440,8 1440,34 0,90"/><polygon class="f-azul" points="0,90 1440,34 1440,52 0,108"/></svg>
+<section class="seccao" id="apoiar">
+  <div class="contentor par">
+    <div class="texto">
+      <h2>Apoiar o movimento</h2>
+      <p>Diz-nos quem és e como queres ajudar. Ao carregar em <strong>Enviar pelo meu email</strong>, abre-se o teu programa de email com a mensagem pronta para participa@acreditarnomontijo.pt.</p>
+      <p>Este site não guarda nada do que escreves. A mensagem só segue se a enviares.</p>
+    </div>
+    <form class="formulario" id="form-participar" novalidate>
+      <div class="campo">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" autocomplete="name" required>
+      </div>
+      <div class="campo">
+        <label for="localidade">Onde vives</label>
+        <select id="localidade" name="localidade">
+            <option value="">Escolhe uma opção</option>
+            <option>Montijo</option>
+            <option>Afonsoeiro</option>
+            <option>Atalaia</option>
+            <option>Alto Estanqueiro-Jardia</option>
+            <option>Sarilhos Grandes</option>
+            <option>Pegões</option>
+            <option>Santo Isidro de Pegões</option>
+            <option>Canha</option>
+            <option>Fora do concelho</option>
+        </select>
+      </div>
+      <fieldset>
+        <legend>És militante do PSD?</legend>
+        <label class="opcao"><input type="radio" name="militante" value="Sim"> Sim</label>
+        <label class="opcao"><input type="radio" name="militante" value="Não"> Não</label>
+        <label class="opcao"><input type="radio" name="militante" value="Prefiro não dizer"> Prefiro não dizer</label>
+      </fieldset>
+      <fieldset>
+        <legend>Como queres ajudar?</legend>
+        <label class="opcao"><input type="checkbox" name="ajuda" value="Divulgar junto de amigos e família"> Divulgar junto de amigos e família</label>
+        <label class="opcao"><input type="checkbox" name="ajuda" value="Estar em encontros nas freguesias"> Estar em encontros nas freguesias</label>
+        <label class="opcao"><input type="checkbox" name="ajuda" value="Dar ideias e propostas"> Dar ideias e propostas</label>
+        <label class="opcao"><input type="checkbox" name="ajuda" value="Outra forma"> Outra forma, explico abaixo</label>
+      </fieldset>
+      <div class="campo">
+        <label for="mensagem">Mensagem <span class="ajuda" style="display:inline;margin:0">(opcional)</span></label>
+        <textarea id="mensagem" name="mensagem"></textarea>
+      </div>
+      <div class="campo">
+        <label class="opcao consentimento"><input type="checkbox" id="consentimento" name="consentimento" required> Autorizo o movimento Acreditar no Montijo! a usar estes dados para me contactar sobre o movimento. Posso retirar esta autorização a qualquer momento.</label>
+        <p class="erro" id="erro" role="alert" hidden></p>
+      </div>
+      <button class="botao" type="submit">Enviar pelo meu email</button>
+      <p class="nota-form">Se o email não abrir, escreve diretamente para <a href="mailto:participa@acreditarnomontijo.pt">participa@acreditarnomontijo.pt</a>. Lê a <a href="privacidade.html">política de privacidade</a>.</p>
+    </form>
+  </div>
+</section>
+
+<section class="seccao nevoa" id="aderir">
+  <div class="contentor">
+    <div class="texto">
+      <h2>Aderir ao PSD</h2>
+      <p>A inscrição faz-se na plataforma oficial do partido. Com a Chave Móvel Digital, os dados do Cartão de Cidadão são preenchidos automaticamente.</p>
+      <p>A inscrição precisa de um proponente, um militante que avalize a tua candidatura. Se não conheces nenhum, <a href="mailto:participa@acreditarnomontijo.pt?subject=Preciso%20de%20um%20proponente">fala connosco</a>.</p>
+      <div class="botoes"><a class="botao botao-linha claro" href="https://adesoes.psd.pt" rel="noopener">Ir para adesoes.psd.pt</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="seccao" id="quotas">
+  <div class="contentor">
+    <div class="texto">
+      <h2>Ter as quotas em dia</h2>
+      <p>Só vota quem tem as quotas pagas. Confirma a tua situação na área de militante do PSD.</p>
+      <div class="botoes"><a class="botao botao-linha claro" href="https://militante.psd.pt" rel="noopener">Ir para militante.psd.pt</a></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="rodape">
+  <svg class="faixa" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" focusable="false"><polygon class="f-azul" points="0,12 1440,68 1440,86 0,30"/><polygon class="f-laranja" points="0,30 1440,86 1440,112 0,56"/><polygon class="f-noite" points="0,56 1440,112 1440,121 0,121"/></svg>
+  <div class="contentor">
+    <div class="rodape-grelha">
+      <div>
+        <a class="marca" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M2 17 30 5v7L2 24Z" fill="#E87722"/><path d="M2 25.5 30 13.5v5L2 30.5Z" fill="#4F80C2"/></svg><span>Acreditar no Montijo!</span></a>
+        <p>Um movimento dentro do PSD Montijo.</p>
+      </div>
+      <div>
+        <h2>Escrever-nos</h2>
+        <ul>
+          <li><a href="mailto:geral@acreditarnomontijo.pt">geral@acreditarnomontijo.pt</a></li>
+          <li><a href="mailto:participa@acreditarnomontijo.pt">participa@acreditarnomontijo.pt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Neste site</h2>
+        <ul>
+          <li><a href="movimento.html">Movimento</a></li>
+          <li><a href="participar.html">Participar</a></li>
+          <li><a href="contactos.html">Contactos</a></li>
+          <li><a href="privacidade.html">Privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="aviso">
+      <p>Este site é da responsabilidade do movimento Acreditar no Montijo! e não é um sítio oficial do Partido Social Democrata.</p>
+      <p>Não usamos cookies nem medimos visitas. <a href="privacidade.html">Política de privacidade</a>.</p>
+    </div>
+  </div>
+</footer>
+<script>
+(function () {
+  var form = document.getElementById('form-participar');
+  if (!form) return;
+  var erro = document.getElementById('erro');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var nome = form.nome.value.trim();
+    if (!nome) { erro.textContent = 'Escreve o teu nome.'; erro.hidden = false; form.nome.focus(); return; }
+    if (!form.consentimento.checked) { erro.textContent = 'Para enviar, marca a autorização.'; erro.hidden = false; form.consentimento.focus(); return; }
+    erro.hidden = true;
+    var militante = (form.querySelector('input[name="militante"]:checked') || {}).value || 'Não indicado';
+    var ajuda = Array.prototype.map.call(form.querySelectorAll('input[name="ajuda"]:checked'), function (c) { return '- ' + c.value; });
+    var linhas = [
+      'Olá,', '', 'Quero participar no movimento Acreditar no Montijo!', '',
+      'Nome: ' + nome,
+      'Onde vivo: ' + (form.localidade.value || 'Não indicado'),
+      'Militante do PSD: ' + militante, '',
+      'Como quero ajudar:', ajuda.length ? ajuda.join('\n') : '- Não indicado'
+    ];
+    var msg = form.mensagem.value.trim();
+    if (msg) { linhas.push('', 'Mensagem:', msg); }
+    linhas.push('', 'Autorizo o uso destes dados para me contactarem sobre o movimento.');
+    window.location.href = 'mailto:participa@acreditarnomontijo.pt?subject=' + encodeURIComponent('Quero participar: ' + nome) + '&body=' + encodeURIComponent(linhas.join('\n'));
+  });
+})();
+</script>
+</body>
+</html>
