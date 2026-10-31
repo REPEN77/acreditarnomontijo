@@ -49,8 +49,8 @@
 <section class="seccao padrao" id="apoiar">
   <div class="contentor par">
     <div class="texto">
-      <div class="titulo-icone"><span class="icone"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10" cy="8" r="4"/><path d="M3 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M19 8v6M16 11h6"/></svg></span><h2>Apoiar a candidatura</h2></div>
-      <p>Diz-nos quem és e como queres ajudar. Ao carregar em <strong>Enviar pelo meu email</strong>, abre-se o teu programa de email com a mensagem pronta para participa@acreditarnomontijo.pt.</p>
+      <div class="titulo-icone"><span class="icone"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5"/><circle cx="17" cy="9" r="2.8"/><path d="M15.6 14.1c3.2-.5 5.9 2 5.9 5.4"/></svg></span><h2>Apoiar a candidatura</h2></div>
+      <p>Procuramos pessoas com experiência e vontade de servir o Montijo. Diz-nos quem és, a tua área e como queres ajudar. Ao carregar em <strong>Enviar pelo meu email</strong>, abre-se o teu programa de email com a mensagem pronta para participa@acreditarnomontijo.pt.</p>
       <p>Este site não guarda nada do que escreves. A mensagem só segue se a enviares.</p>
     </div>
     <form class="formulario" id="form-participar" novalidate>
@@ -73,6 +73,10 @@
             <option>Fora do concelho</option>
         </select>
       </div>
+      <div class="campo">
+        <label for="area">Área profissional <span class="ajuda" style="display:inline;margin:0">(opcional)</span></label>
+        <input type="text" id="area" name="area" autocomplete="organization-title">
+      </div>
       <fieldset>
         <legend>És militante do PSD?</legend>
         <label class="opcao"><input type="radio" name="militante" value="Sim"> Sim</label>
@@ -81,6 +85,7 @@
       </fieldset>
       <fieldset>
         <legend>Como queres ajudar?</legend>
+        <label class="opcao"><input type="checkbox" name="ajuda" value="Contribuir com a minha experiência profissional"> Contribuir com a minha experiência profissional</label>
         <label class="opcao"><input type="checkbox" name="ajuda" value="Divulgar junto de amigos e família"> Divulgar junto de amigos e família</label>
         <label class="opcao"><input type="checkbox" name="ajuda" value="Estar em encontros nas freguesias"> Estar em encontros nas freguesias</label>
         <label class="opcao"><input type="checkbox" name="ajuda" value="Dar ideias e propostas"> Dar ideias e propostas</label>
@@ -206,6 +211,7 @@
       'Olá,', '', 'Quero participar na candidatura Acreditar no Montijo!', '',
       'Nome: ' + nome,
       'Onde vivo: ' + (form.localidade.value || 'Não indicado'),
+      'Área profissional: ' + (form.area.value.trim() || 'Não indicada'),
       'Militante do PSD: ' + militante, '',
       'Como quero ajudar:', ajuda.length ? ajuda.join('\n') : '- Não indicado'
     ];
