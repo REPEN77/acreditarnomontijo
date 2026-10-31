@@ -36,7 +36,7 @@
 </header>
 <main id="conteudo">
 <section class="abertura com-video">
-  
+  <video class="fundo-video" autoplay muted loop playsinline preload="metadata" poster="video/inicio.jpg" aria-hidden="true"><source src="video/inicio.mp4" type="video/mp4"></video>
   <div class="contentor abertura-grelha">
    <div>
     <p class="contexto">Um movimento dentro do PSD Montijo</p>
@@ -144,5 +144,14 @@
     </div>
   </div>
 </footer>
+<script>
+(function () {
+  var reduzir = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var poupar = navigator.connection && navigator.connection.saveData;
+  document.querySelectorAll('video.fundo-video').forEach(function (v) {
+    if (reduzir || poupar) { v.removeAttribute('autoplay'); v.pause(); v.preload = 'none'; }
+  });
+})();
+</script>
 </body>
 </html>
