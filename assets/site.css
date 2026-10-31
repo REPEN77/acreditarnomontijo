@@ -388,3 +388,61 @@ fieldset { border: 0; padding: 0; margin: 0 0 1.3rem; }
 }
 .js .cartoes-escada .cartao.visivel:hover, .cartoes-escada .cartao:hover { transform: translateY(-4px); }
 @media (min-width: 60rem) { .cartoes-escada { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+
+/* =========================================================
+   Efeitos visuais (todos desligados com "reduzir movimento")
+   ========================================================= */
+/* barra de progresso de leitura */
+.progresso { position: fixed; left: 0; top: 0; height: 3px; width: 100%; background: var(--laranja); transform: scaleX(0); transform-origin: 0 50%; z-index: 50; pointer-events: none; }
+
+/* cabeçalho fixo em ecrãs largos, mais compacto depois de deslizar */
+@media (min-width: 54rem) {
+  .topo { position: sticky; top: 0; z-index: 40; transition: box-shadow .3s ease, background-color .3s ease; }
+  .topo .contentor { transition: padding .3s ease; }
+  .topo.encolhido { box-shadow: 0 10px 30px -12px rgba(0,0,0,.55); background: rgba(13,43,78,.97); }
+  .topo.encolhido .contentor { padding-top: .55rem; padding-bottom: .55rem; }
+  .topo.encolhido .marca img { height: 2.5rem; }
+  .marca img { transition: height .3s ease; }
+}
+
+/* fotografias de fundo maiores do que a secção, para o efeito de profundidade */
+.fundo-foto.paralaxe { top: -10%; bottom: auto; height: 120%; will-change: transform; }
+
+/* título do topo: palavras a subir */
+.titulo-animado .palavra { display: inline-block; overflow: hidden; vertical-align: top; padding-top: .14em; margin-top: -.14em; }
+.titulo-animado .palavra > span { display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+  .titulo-animado .palavra > span { transform: translateY(110%); animation: subir .85s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: calc(var(--i) * 70ms + 150ms); }
+  .entra { opacity: 0; animation: aparecer .8s ease forwards; animation-delay: .75s; }
+  .entra-2 { animation-delay: .95s; }
+  .localidades { opacity: 0; animation: aparecer 1s ease forwards; animation-delay: 1.1s; }
+  @keyframes subir { to { transform: none; } }
+  @keyframes aparecer { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+}
+
+/* localidades a acender */
+.localidades li { transition: color .5s ease; }
+.localidades li.ativa { color: var(--laranja); }
+
+/* mosaico: zoom lento e linha âmbar na legenda */
+.peca img { transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
+.peca:hover img { transform: scale(1.06); }
+.peca figcaption::before { content: ""; display: block; width: 1.6rem; height: 3px; background: var(--laranja); margin-bottom: .45rem; transition: width .5s ease; }
+.peca:hover figcaption::before { width: 3.2rem; }
+
+/* cartões: elevação ao passar */
+.cartoes .cartao { transition: transform .3s ease, box-shadow .3s ease, opacity .7s ease; }
+.js .cartoes .cartao.visivel:hover, .cartoes .cartao:hover { transform: translateY(-6px); box-shadow: 0 34px 56px -30px rgba(13,43,78,.6); }
+.cartao .icone { transition: background-color .3s ease, color .3s ease; }
+.cartoes .cartao:hover .icone { background: var(--laranja); color: var(--noite); }
+
+/* fotos sobrepostas: a pequena desliza ligeiramente ao aparecer */
+@media (prefers-reduced-motion: no-preference) {
+  .js .fotos-sobrepostas .foto-b { transform: translate(14px, 14px); transition: transform 1s cubic-bezier(.2,.7,.2,1) .3s; }
+  .js .fotos-sobrepostas.visivel .foto-b { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .peca img, .cartoes .cartao, .topo, .marca img { transition: none; }
+}
