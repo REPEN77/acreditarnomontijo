@@ -21,7 +21,7 @@
 <link rel="apple-touch-icon" href="assets/icone-180.png">
 <link rel="preload" href="assets/fonts/barlow-condensed-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/source-serif-4-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/site.css?v=119b4a35">
+<link rel="stylesheet" href="assets/site.css?v=6bdd5786">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -59,16 +59,13 @@
         <input type="text" id="nome" name="nome" autocomplete="name" required>
       </div>
       <div class="campo">
-        <label for="localidade">Onde vives</label>
+        <label for="localidade">Freguesia onde vives</label>
         <select id="localidade" name="localidade">
             <option value="">Escolhe uma opção</option>
-            <option>Montijo</option>
-            <option>Afonsoeiro</option>
-            <option>Atalaia</option>
-            <option>Alto Estanqueiro-Jardia</option>
+            <option>Montijo e Afonsoeiro</option>
+            <option>Atalaia e Alto Estanqueiro-Jardia</option>
             <option>Sarilhos Grandes</option>
             <option>Pegões</option>
-            <option>Santo Isidro de Pegões</option>
             <option>Canha</option>
             <option>Fora do concelho</option>
         </select>
@@ -210,7 +207,7 @@
     var linhas = [
       'Olá,', '', 'Quero participar na candidatura Acreditar no Montijo!', '',
       'Nome: ' + nome,
-      'Onde vivo: ' + (form.localidade.value || 'Não indicado'),
+      'Freguesia: ' + (form.localidade.value || 'Não indicado'),
       'Área profissional: ' + (form.area.value.trim() || 'Não indicada'),
       'Militante do PSD: ' + militante, '',
       'Como quero ajudar:', ajuda.length ? ajuda.join('\n') : '- Não indicado'

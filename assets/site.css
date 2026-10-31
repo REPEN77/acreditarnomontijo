@@ -446,3 +446,5 @@ fieldset { border: 0; padding: 0; margin: 0 0 1.3rem; }
 @media (prefers-reduced-motion: reduce) {
   .peca img, .cartoes .cartao, .topo, .marca img { transition: none; }
 }
+
+.sem-quebra { white-space: nowrap; }
