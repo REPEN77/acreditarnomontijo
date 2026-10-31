@@ -13,7 +13,8 @@
 :root {
   --azul: #17457F;
   --noite: #0D2B4E;
-  --laranja: #E87722;
+  --laranja: #D39A5A;      /* âmbar suave, igual ao logótipo */
+  --ardosia: #5B7BA6;      /* azul-ardósia do logótipo */
   --vermelho: #C8322B;
   --nevoa: #F1F4F8;
   --linha: #D5DCE6;
@@ -45,7 +46,8 @@ img, svg { display: block; max-width: 100%; }
 p, ul, ol, dl, figure { margin: 0 0 1em; }
 a { color: var(--azul); text-underline-offset: .18em; text-decoration-thickness: 1px; }
 a:hover { text-decoration-thickness: 2px; }
-:focus-visible { outline: 3px solid var(--laranja); outline-offset: 3px; border-radius: 2px; }
+:focus-visible { outline: 3px solid var(--azul); outline-offset: 3px; border-radius: 2px; }
+.topo :focus-visible, .abertura :focus-visible, .banda :focus-visible, .rodape :focus-visible { outline-color: var(--laranja); }
 .so-leitores { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .saltar { position: absolute; left: 1rem; top: -4rem; background: var(--laranja); color: var(--noite); padding: .6rem 1rem; font: 600 1rem var(--ui); z-index: 10; }
 .saltar:focus { top: 1rem; }
@@ -64,7 +66,9 @@ h3 { font-size: 1.6rem; line-height: 1.08; }
 .topo .contentor { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "marca botao" "menu menu"; align-items: center; gap: .5rem .6rem; padding-top: .9rem; padding-bottom: .7rem; }
 @media (min-width: 54rem) { .topo .contentor { grid-template-columns: auto 1fr auto; grid-template-areas: "marca menu botao"; gap: .75rem 2rem; padding-top: 1rem; padding-bottom: 1rem; } }
 .marca { grid-area: marca; display: inline-flex; align-items: center; gap: .55rem; color: var(--branco); text-decoration: none; font-family: var(--display); font-weight: 800; font-size: clamp(1.12rem, 5vw, 1.55rem); letter-spacing: .005em; line-height: 1; white-space: nowrap; }
-.marca svg { width: 1.9rem; height: 1.9rem; flex: none; }
+.marca img { display: block; height: clamp(2.3rem, 9vw, 2.7rem); width: auto; }
+@media (min-width: 54rem) { .marca img { height: 3rem; } }
+.marca-rodape img, .rodape .marca img { height: 3.4rem; }
 .marca:hover { text-decoration: none; }
 .menu { grid-area: menu; }
 @media (min-width: 54rem) { .menu { justify-self: end; } }
@@ -82,7 +86,7 @@ h3 { font-size: 1.6rem; line-height: 1.08; }
   background: var(--laranja); color: var(--noite); border: 2px solid var(--laranja);
   padding: .85rem 1.4rem; border-radius: 3px;
 }
-.botao:hover { background: #F08B3D; border-color: #F08B3D; color: var(--noite); }
+.botao:hover { background: #DEAD73; border-color: #DEAD73; color: var(--noite); }
 .botao-linha { background: transparent; color: inherit; border-color: currentColor; }
 .botao-linha:hover { background: rgba(130,150,180,.14); border-color: currentColor; color: inherit; }
 .botoes { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
@@ -114,7 +118,7 @@ h3 { font-size: 1.6rem; line-height: 1.08; }
 /* faixa diagonal do logótipo: aparece duas vezes, no fim da abertura e no início do rodapé */
 .faixa { display: block; width: 100%; height: clamp(48px, 8vw, 120px); }
 .faixa .f-laranja { fill: var(--laranja); }
-.faixa .f-azul { fill: var(--azul); }
+.faixa .f-azul { fill: var(--ardosia); }
 .faixa .f-noite { fill: var(--noite); }
 @media (prefers-reduced-motion: no-preference) {
   .faixa-entrada .f-laranja, .faixa-entrada .f-azul { animation: corte .9s cubic-bezier(.2,.7,.2,1) both; }
