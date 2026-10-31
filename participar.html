@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Participar | Acreditar no Montijo!</title>
-<meta name="description" content="Como apoiar o movimento Acreditar no Montijo!, aderir ao PSD e ter as quotas em dia.">
+<meta name="description" content="Como apoiar a candidatura Acreditar no Montijo!, aderir ao PSD e ter as quotas em dia.">
 <link rel="canonical" href="https://www.acreditarnomontijo.pt/participar.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_PT">
 <meta property="og:site_name" content="Acreditar no Montijo!">
 <meta property="og:title" content="Participar">
-<meta property="og:description" content="Como apoiar o movimento Acreditar no Montijo!, aderir ao PSD e ter as quotas em dia.">
+<meta property="og:description" content="Como apoiar a candidatura Acreditar no Montijo!, aderir ao PSD e ter as quotas em dia.">
 <meta property="og:url" content="https://www.acreditarnomontijo.pt/participar.html">
 <meta property="og:image" content="https://www.acreditarnomontijo.pt/assets/partilha.png">
 <meta property="og:image:width" content="1200">
@@ -31,7 +31,7 @@
   <div class="contentor">
     <a class="marca" href="index.html"><img src="assets/logo-negativo.svg?v=a77c7aef" alt="Acreditar no Montijo!" width="127" height="48"></a>
     <nav class="menu" aria-label="Principal">
-      <ul><li><a href="movimento.html">Movimento</a></li><li><a href="contactos.html">Contactos</a></li></ul>
+      <ul><li><a href="candidatura.html">A candidatura</a></li><li><a href="contactos.html">Contactos</a></li></ul>
     </nav>
     <a class="botao botao-topo" href="participar.html" aria-current="page">Participar</a>
   </div>
@@ -49,7 +49,7 @@
 <section class="seccao padrao" id="apoiar">
   <div class="contentor par">
     <div class="texto">
-      <div class="titulo-icone"><span class="icone"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10" cy="8" r="4"/><path d="M3 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M19 8v6M16 11h6"/></svg></span><h2>Apoiar o movimento</h2></div>
+      <div class="titulo-icone"><span class="icone"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10" cy="8" r="4"/><path d="M3 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M19 8v6M16 11h6"/></svg></span><h2>Apoiar a candidatura</h2></div>
       <p>Diz-nos quem és e como queres ajudar. Ao carregar em <strong>Enviar pelo meu email</strong>, abre-se o teu programa de email com a mensagem pronta para participa@acreditarnomontijo.pt.</p>
       <p>Este site não guarda nada do que escreves. A mensagem só segue se a enviares.</p>
     </div>
@@ -91,7 +91,7 @@
         <textarea id="mensagem" name="mensagem"></textarea>
       </div>
       <div class="campo">
-        <label class="opcao consentimento"><input type="checkbox" id="consentimento" name="consentimento" required> Autorizo o movimento Acreditar no Montijo! a usar estes dados para me contactar sobre o movimento. Posso retirar esta autorização a qualquer momento.</label>
+        <label class="opcao consentimento"><input type="checkbox" id="consentimento" name="consentimento" required> Autorizo a candidatura Acreditar no Montijo! a usar estes dados para me contactar sobre a candidatura. Posso retirar esta autorização a qualquer momento.</label>
         <p class="erro" id="erro" role="alert" hidden></p>
       </div>
       <button class="botao" type="submit">Enviar pelo meu email</button>
@@ -127,7 +127,7 @@
     <div class="rodape-grelha">
       <div>
         <a class="marca marca-rodape" href="index.html"><img src="assets/logo-negativo.svg?v=a77c7aef" alt="Acreditar no Montijo!" width="144" height="54"></a>
-        <p>Um movimento dentro do PSD Montijo.</p>
+        <p>Uma candidatura para trazer o PSD de volta.</p>
       </div>
       <div>
         <h2>Escrever-nos</h2>
@@ -139,7 +139,7 @@
       <div>
         <h2>Neste site</h2>
         <ul>
-          <li><a href="movimento.html">Movimento</a></li>
+          <li><a href="candidatura.html">A candidatura</a></li>
           <li><a href="participar.html">Participar</a></li>
           <li><a href="contactos.html">Contactos</a></li>
           <li><a href="privacidade.html">Privacidade</a></li>
@@ -148,7 +148,7 @@
       </div>
     </div>
     <div class="aviso">
-      <p>Este site é da responsabilidade do movimento Acreditar no Montijo! e não é um sítio oficial do Partido Social Democrata.</p>
+      <p>Este site é da responsabilidade da candidatura Acreditar no Montijo! e não é um sítio oficial do Partido Social Democrata.</p>
       <p>Não usamos cookies nem medimos visitas. <a href="privacidade.html">Política de privacidade</a>.</p>
     </div>
   </div>
@@ -203,7 +203,7 @@
     var militante = (form.querySelector('input[name="militante"]:checked') || {}).value || 'Não indicado';
     var ajuda = Array.prototype.map.call(form.querySelectorAll('input[name="ajuda"]:checked'), function (c) { return '- ' + c.value; });
     var linhas = [
-      'Olá,', '', 'Quero participar no movimento Acreditar no Montijo!', '',
+      'Olá,', '', 'Quero participar na candidatura Acreditar no Montijo!', '',
       'Nome: ' + nome,
       'Onde vivo: ' + (form.localidade.value || 'Não indicado'),
       'Militante do PSD: ' + militante, '',
@@ -211,7 +211,7 @@
     ];
     var msg = form.mensagem.value.trim();
     if (msg) { linhas.push('', 'Mensagem:', msg); }
-    linhas.push('', 'Autorizo o uso destes dados para me contactarem sobre o movimento.');
+    linhas.push('', 'Autorizo o uso destes dados para me contactarem sobre a candidatura.');
     window.location.href = 'mailto:participa@acreditarnomontijo.pt?subject=' + encodeURIComponent('Quero participar: ' + nome) + '&body=' + encodeURIComponent(linhas.join('\n'));
   });
 })();
