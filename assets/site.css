@@ -277,3 +277,114 @@ fieldset { border: 0; padding: 0; margin: 0 0 1.3rem; }
   .abertura, .rodape, .topo { background: none; color: #000; }
   .abertura h1, .abertura .entrada { color: #000; }
 }
+
+
+/* =========================================================
+   Elementos visuais: cartões, fotos sobrepostas, padrões, painéis
+   ========================================================= */
+.botao-escuro { background: var(--noite); border-color: var(--noite); color: var(--branco); }
+.botao-escuro:hover { background: var(--azul); border-color: var(--azul); color: var(--branco); }
+
+/* padrão de faixas diagonais nos cantos (eco do logótipo) */
+.padrao { position: relative; isolation: isolate; overflow: hidden; }
+.padrao::after {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  top: -30px; right: -30px; width: clamp(170px, 26vw, 340px); aspect-ratio: 1;
+  background:
+    repeating-linear-gradient(-28deg, rgba(211,154,90,.75) 0 8px, transparent 8px 30px),
+    repeating-linear-gradient(-28deg, transparent 0 15px, rgba(91,123,166,.55) 15px 21px, transparent 21px 30px);
+  -webkit-mask-image: radial-gradient(circle at 100% 0, #000 0 22%, transparent 68%);
+          mask-image: radial-gradient(circle at 100% 0, #000 0 22%, transparent 68%);
+  opacity: .5;
+}
+.padrao-esquerda::after { right: auto; left: -30px;
+  -webkit-mask-image: radial-gradient(circle at 0 0, #000 0 22%, transparent 68%);
+          mask-image: radial-gradient(circle at 0 0, #000 0 22%, transparent 68%); }
+
+/* cabeçalhos de secção */
+.cabeca-dupla { max-width: none; display: grid; gap: .5rem 4rem; align-items: end; }
+@media (min-width: 52rem) { .cabeca-dupla { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .cabeca-dupla h2 { margin: 0; } .cabeca-dupla p { margin: 0; } }
+.cabeca-centro { margin-left: auto; margin-right: auto; text-align: center; }
+
+/* ícones em círculo */
+.icone { display: inline-grid; place-items: center; width: 3.6rem; height: 3.6rem; border-radius: 50%; background: #F6EADB; color: #9A5F22; margin-bottom: 1.1rem; flex: none; }
+.icone svg { width: 1.7rem; height: 1.7rem; }
+
+/* cartões */
+.cartoes { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15.5rem), 1fr)); }
+.cartao { background: var(--branco); padding: 2rem 1.6rem 1.9rem; box-shadow: 0 22px 44px -28px rgba(13,43,78,.45); border-bottom: 4px solid transparent; }
+.cartao h3 { font-size: 1.45rem; margin-bottom: .55rem; }
+.cartao p { margin: 0; color: var(--suave); font-size: 1.06rem; }
+.cartao-destaque { background: var(--noite); border-bottom-color: var(--laranja); }
+.cartao-destaque h3 { color: var(--branco); }
+.cartao-destaque p { color: #C9D5E6; }
+.cartao-destaque .icone { background: var(--laranja); color: var(--noite); }
+.cartao .ligacao { display: inline-block; margin-top: 1rem; font: 600 1.05rem/1.3 var(--ui); }
+
+/* duas fotografias sobrepostas + texto */
+.duo { display: grid; gap: 3rem; align-items: center; }
+@media (min-width: 52rem) { .duo { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 5rem; } }
+.fotos-sobrepostas { position: relative; padding: 0 12% 14% 0; }
+.fotos-sobrepostas::before { content: ""; position: absolute; left: -1.2rem; top: -1.2rem; width: 45%; height: 40%; z-index: -1;
+  background: repeating-linear-gradient(-28deg, var(--laranja) 0 9px, transparent 9px 22px); opacity: .45; }
+.fotos-sobrepostas img { display: block; object-fit: cover; }
+.foto-a { width: 100%; aspect-ratio: 4 / 3; box-shadow: 0 24px 48px -28px rgba(13,43,78,.55); }
+.foto-b { position: absolute; right: 0; bottom: 0; width: 46%; aspect-ratio: 3 / 4; border: 6px solid var(--branco); box-shadow: 0 20px 40px -20px rgba(13,43,78,.5); }
+
+/* secção escura */
+.seccao.escura { background: var(--noite); color: #C9D5E6; padding-top: clamp(3.5rem, 8vw, 6rem); }
+.seccao.escura + .seccao { padding-top: clamp(3.5rem, 8vw, 6rem); }
+.seccao.escura h2 { color: var(--branco); }
+.seccao.escura .cabeca p { color: #C9D5E6; }
+.escura .peca { box-shadow: 0 24px 48px -30px rgba(0,0,0,.7); }
+
+/* como ajudar: texto + cartões em escada */
+.ajudar { display: grid; gap: 2.5rem; align-items: start; }
+@media (min-width: 60rem) { .ajudar { grid-template-columns: minmax(0, .8fr) minmax(0, 1.6fr); gap: 4rem; align-items: center; } }
+.cartoes-escada { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.5rem), 1fr)); }
+@media (min-width: 60rem) { .cartoes-escada li:nth-child(2) { margin-top: 3rem; } .cartoes-escada { padding-bottom: 3rem; } }
+.cartao-ambar { background: var(--laranja); }
+.cartao-ambar h3, .cartao-ambar p, .cartao-ambar .ligacao { color: var(--noite); }
+.cartao-ambar .icone { background: var(--branco); color: var(--noite); }
+.cartoes-escada .cartao { transition: transform .25s ease, box-shadow .25s ease; }
+.cartoes-escada .cartao:hover { transform: translateY(-4px); box-shadow: 0 30px 50px -28px rgba(13,43,78,.55); }
+
+/* painel de apelo final */
+.seccao-apelo { padding-top: clamp(3rem, 8vw, 5.5rem); }
+.apelo { position: relative; border-radius: 6px; overflow: hidden; background: var(--noite); color: var(--branco);
+  padding: clamp(2rem, 5vw, 3.5rem); display: grid; gap: 1.5rem; align-items: center; }
+@media (min-width: 52rem) { .apelo { grid-template-columns: minmax(0, 1fr) auto; } }
+.apelo h2 { color: var(--branco); margin-bottom: .4rem; }
+.apelo p { margin: 0; color: #DCE5F2; max-width: 36rem; }
+.apelo .botoes { margin: 0; }
+.apelo .fundo-foto { opacity: .4; }
+
+/* foto ao lado do texto na página Movimento */
+.foto-lado { margin: 2rem 0 0; }
+.foto-lado img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; box-shadow: 0 24px 48px -28px rgba(13,43,78,.55); }
+.foto-lado figcaption { font: 500 .95rem/1.4 var(--ui); color: var(--suave); margin-top: .5rem; }
+
+/* contactos em cartões */
+.contactos li { background: var(--branco); border-top: 0; padding: 1.8rem 1.6rem; box-shadow: 0 22px 44px -28px rgba(13,43,78,.45); }
+
+/* ícone antes do título de secção */
+.titulo-icone { display: flex; align-items: center; gap: 1rem; }
+.titulo-icone .icone { margin: 0; }
+.titulo-icone h2 { margin: 0; }
+.texto .titulo-icone { margin-bottom: 1rem; }
+
+/* rodapé com fotografia esbatida */
+.rodape { position: relative; isolation: isolate; }
+.rodape::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; top: clamp(48px, 8vw, 120px); z-index: -1;
+  background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Ba%C3%ADa_de_Sarilhos_Grandes_-_Portugal_%2848805305053%29.jpg/960px-Ba%C3%ADa_de_Sarilhos_Grandes_-_Portugal_%2848805305053%29.jpg") center / cover no-repeat; opacity: .1; filter: grayscale(1); }
+
+/* aparecer ao deslizar (só com JavaScript e sem preferência por menos movimento) */
+@media (prefers-reduced-motion: no-preference) {
+  .js .revelar { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .js .revelar.visivel { opacity: 1; transform: none; }
+  .js .cartoes .revelar:nth-child(2), .js .cartoes-escada .revelar:nth-child(2) { transition-delay: .1s; }
+  .js .cartoes .revelar:nth-child(3), .js .cartoes-escada .revelar:nth-child(3) { transition-delay: .2s; }
+  .js .cartoes .revelar:nth-child(4) { transition-delay: .3s; }
+}
+.js .cartoes-escada .cartao.visivel:hover, .cartoes-escada .cartao:hover { transform: translateY(-4px); }
+@media (min-width: 60rem) { .cartoes-escada { grid-template-columns: repeat(3, minmax(0, 1fr)); } }

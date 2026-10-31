@@ -22,6 +22,7 @@
 <link rel="preload" href="assets/fonts/barlow-condensed-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/source-serif-4-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="saltar" href="#conteudo">Saltar para o conteúdo</a>
@@ -44,12 +45,16 @@
   </div>
 </section>
 <svg class="faixa faixa-entrada" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="f-noite" x="0" y="0" width="1440" height="2"/><polygon class="f-noite" points="0,0 1440,0 1440,8 0,64"/><polygon class="f-laranja" points="0,64 1440,8 1440,34 0,90"/><polygon class="f-azul" points="0,90 1440,34 1440,52 0,108"/></svg>
-<section class="seccao">
+<section class="seccao padrao">
   <div class="contentor com-lado">
     <aside class="lado" aria-label="Destaque">
       <blockquote class="citacao">
         <p>Um acordo de governo é um contrato, não é uma anestesia.</p>
       </blockquote>
+      <figure class="foto-lado">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Coreto%2C_Igreja_Matriz_do_Montijo%2C_Pra%C3%A7a_da_Rep%C3%BAblica_01.jpg/960px-Coreto%2C_Igreja_Matriz_do_Montijo%2C_Pra%C3%A7a_da_Rep%C3%BAblica_01.jpg" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Coreto%2C_Igreja_Matriz_do_Montijo%2C_Pra%C3%A7a_da_Rep%C3%BAblica_01.jpg/500px-Coreto%2C_Igreja_Matriz_do_Montijo%2C_Pra%C3%A7a_da_Rep%C3%BAblica_01.jpg 500w, https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Coreto%2C_Igreja_Matriz_do_Montijo%2C_Pra%C3%A7a_da_Rep%C3%BAblica_01.jpg/960px-Coreto%2C_Igreja_Matriz_do_Montijo%2C_Pra%C3%A7a_da_Rep%C3%BAblica_01.jpg 960w" sizes="30vw" alt="Coreto e Igreja Matriz na Praça da República, Montijo" loading="lazy" decoding="async">
+        <figcaption>Praça da República, Montijo</figcaption>
+      </figure>
     </aside>
     <div class="texto">
       <h2>Onde estamos</h2>
@@ -71,6 +76,18 @@
       <h2>Para onde vamos</h2>
       <p>Em 2021 ficámos a pouco mais de três centenas de votos de ganhar a Câmara. Em 2029, quem jogar para o empate perde. O PSD tem de chegar como alternativa, com projeto, com rosto e com obra que os montijenses reconheçam como sua.</p>
 
+    </div>
+  </div>
+</section>
+
+<section class="seccao seccao-apelo">
+  <div class="contentor">
+    <div class="apelo com-video revelar">
+      <img class="fundo-foto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Ba%C3%ADa_de_Sarilhos_Grandes_-_Portugal_%2848805305053%29.jpg/1280px-Ba%C3%ADa_de_Sarilhos_Grandes_-_Portugal_%2848805305053%29.jpg" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Ba%C3%ADa_de_Sarilhos_Grandes_-_Portugal_%2848805305053%29.jpg/960px-Ba%C3%ADa_de_Sarilhos_Grandes_-_Portugal_%2848805305053%29.jpg 960w, https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Ba%C3%ADa_de_Sarilhos_Grandes_-_Portugal_%2848805305053%29.jpg/1280px-Ba%C3%ADa_de_Sarilhos_Grandes_-_Portugal_%2848805305053%29.jpg 1280w, https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Ba%C3%ADa_de_Sarilhos_Grandes_-_Portugal_%2848805305053%29.jpg/1920px-Ba%C3%ADa_de_Sarilhos_Grandes_-_Portugal_%2848805305053%29.jpg 1920w" sizes="100vw" alt="" decoding="async">
+      <div class="apelo-texto">
+        <h2>Concordas? Junta-te.</h2>
+        <p>Diz-nos onde queres ajudar e em que freguesia vives.</p>
+      </div>
       <div class="botoes">
         <a class="botao" href="participar.html">Participar</a>
       </div>
@@ -110,5 +127,17 @@
     </div>
   </div>
 </footer>
+<script>
+(function () {
+  var els = document.querySelectorAll('.revelar');
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    els.forEach(function (e) { e.classList.add('visivel'); }); return;
+  }
+  var io = new IntersectionObserver(function (entradas) {
+    entradas.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('visivel'); io.unobserve(en.target); } });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
 </body>
 </html>
