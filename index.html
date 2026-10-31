@@ -321,6 +321,18 @@ a{color:inherit}
 .rodape-links a{color:#fff;text-decoration:none}
 .rodape-links a:hover{color:var(--ambar)}
 .rodape .logo{display:block}
+.grafico-topo{display:flex;justify-content:space-between;align-items:center;gap:.8rem 1rem;margin-bottom:1.2rem;flex-wrap:wrap;position:relative;z-index:1}
+.grafico-topo .etiqueta{margin:0}
+.anos{display:inline-flex;background:var(--nevoa);border-radius:2rem;padding:.25rem;gap:.2rem}
+.ano{all:unset;cursor:pointer;font-family:var(--display);font-weight:800;font-size:1.1rem;padding:.3rem 1rem;border-radius:2rem;color:var(--suave);transition:background .3s,color .3s}
+.ano:hover{color:var(--noite)}
+.ano[aria-selected="true"]{background:var(--noite);color:#fff}
+.ano:focus-visible{outline:3px solid var(--ambar);outline-offset:2px}
+.barras{display:flex;flex-direction:column}
+.barra.cdu .enchimento{background:linear-gradient(90deg,#D98A8A,#B83A3A)}
+.barra.psd .linha-topo span:first-child{color:var(--noite);font-weight:800}
+.barra.psd .valor{color:#C46A14}
+@media (max-width:44rem){.diferenca{flex-direction:column;align-items:flex-start;gap:.4rem}}
 .topo .topo-botao{padding:.55rem 1.1rem}
 .painel .marca-agua{display:none}
 .painel h3,.painel .objetivo{padding-right:0}
@@ -388,24 +400,27 @@ a{color:inherit}
     <div class="partida">
       <div class="revelar">
         <p class="citacao-grande">O PSD é grande no Montijo. Precisa outra vez de <em>uma liderança forte</em> e de <em>uma equipa trabalhadora</em>.</p>
-        <p>O PSD já teve no Montijo resultados fortes e em 2021 ficou a pouco mais de três centenas de votos de ganhar a Câmara.</p>
+        <p>Os resultados provam-no. Em 2013, numa disputa a três, o PSD ficou a 3,4 pontos de ganhar a Câmara. Em 2021, ficou a pouco mais de três centenas de votos.</p>
         <p>Esta pré-moção é o ponto de partida da moção de estratégia global que a candidatura vai apresentar à eleição da Comissão Política Concelhia. Está aberta aos contributos de militantes e de quadros da sociedade civil.</p>
       </div>
-      <div class="cartao-branco revelar" data-atraso="1" id="grafico2021">
-        <div class="etiqueta"><span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M9 15.5l2 2 4-4"/></svg></span>Câmara Municipal, autárquicas 2021</div>
-        <div class="barra ps">
-          <div class="linha-topo"><span>PS</span><span class="valor" data-pct="29.49">29,49%</span></div>
-          <div class="pista"><div class="enchimento" data-largura="29.49"></div></div>
+      <div class="cartao-branco revelar" data-atraso="1" id="grafico">
+        <div class="grafico-topo">
+          <div class="etiqueta"><span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M9 15.5l2 2 4-4"/></svg></span>Câmara Municipal do Montijo</div>
+          <div class="anos" role="tablist" aria-label="Eleição autárquica">
+            <button type="button" role="tab" class="ano" data-ano="2013" aria-selected="false">2013</button>
+            <button type="button" role="tab" class="ano" data-ano="2021" aria-selected="true">2021</button>
+          </div>
         </div>
-        <div class="barra psd">
-          <div class="linha-topo"><span>PSD</span><span class="valor" data-pct="27.74">27,74%</span></div>
-          <div class="pista"><div class="enchimento" data-largura="27.74"></div></div>
+        <div class="barras" id="barras">
+          <div class="barra ps" data-partido="ps"><div class="linha-topo"><span>PS</span><span class="valor">29,49%</span></div><div class="pista"><div class="enchimento"></div></div></div>
+          <div class="barra psd" data-partido="psd"><div class="linha-topo"><span>PSD</span><span class="valor">27,74%</span></div><div class="pista"><div class="enchimento"></div></div></div>
+          <div class="barra cdu" data-partido="cdu"><div class="linha-topo"><span>CDU</span><span class="valor">19,40%</span></div><div class="pista"><div class="enchimento"></div></div></div>
         </div>
         <div class="diferenca">
-          <span class="grande" data-pct="1.75" data-sufixo=" p.p.">1,75 p.p.</span>
-          <p>separaram o PSD da vitória na Câmara em 2021.</p>
+          <span class="grande" id="dif">1,75 p.p.</span>
+          <p id="dif-texto">separaram o PSD da vitória na Câmara em 2021, pouco mais de três centenas de votos.</p>
         </div>
-        <p class="fonte">Fonte: Diário de Notícias, com base nos resultados oficiais das autárquicas de 2021.</p>
+        <p class="fonte" id="fonte-grafico">Fonte: Diário de Notícias e Observador, com base nos resultados oficiais. Em 2021 o PSD concorreu coligado com o CDS e a Aliança.</p>
       </div>
     </div>
   </div>
@@ -622,6 +637,46 @@ a{color:inherit}
       animar(1600,function(e){el.textContent=fmt(alvo*e,2)+suf;});
     });
   });
+
+  /* resultados autárquicos: 2013 e 2021 */
+  var ELEICOES={
+    '2013':{v:{ps:28.59,cdu:26.02,psd:25.22},dif:3.37,texto:'separaram o PSD da vitória na Câmara em 2013, numa disputa a três.',
+      fonte:'Fonte: resultados oficiais das autárquicas de 2013 (Wikipédia) e Diário de Notícias. Em 2013 o CDS concorreu sozinho.'},
+    '2021':{v:{ps:29.49,psd:27.74,cdu:19.40},dif:1.75,texto:'separaram o PSD da vitória na Câmara em 2021, pouco mais de três centenas de votos.',
+      fonte:'Fonte: Diário de Notícias e Observador, com base nos resultados oficiais. Em 2021 o PSD concorreu coligado com o CDS e a Aliança.'}
+  };
+  var anoAtual=null, mexeu=false, linhas=document.querySelectorAll('#barras .barra');
+  function mostrarAno(ano){
+    var e=ELEICOES[ano]; if(!e) return;
+    document.querySelectorAll('.ano').forEach(function(b){b.setAttribute('aria-selected',b.dataset.ano===ano);});
+    var ordem=Object.keys(e.v).sort(function(a,b){return e.v[b]-e.v[a];});
+    linhas.forEach(function(l){
+      var p=l.dataset.partido, alvo=e.v[p], val=l.querySelector('.valor'), de=parseFloat((val.dataset.v||'0'));
+      l.style.order=ordem.indexOf(p);
+      l.querySelector('.enchimento').style.width=(alvo/32*100)+'%';
+      val.dataset.v=alvo;
+      animar(1200,function(k){val.textContent=fmt(de+(alvo-de)*k,2)+'%';});
+    });
+    var dif=document.getElementById('dif'), d0=parseFloat(dif.dataset.v||'0');
+    dif.dataset.v=e.dif;
+    animar(1200,function(k){dif.textContent=fmt(d0+(e.dif-d0)*k,2)+' p.p.';});
+    document.getElementById('dif-texto').textContent=e.texto;
+    document.getElementById('fonte-grafico').textContent=e.fonte;
+    anoAtual=ano;
+  }
+  document.querySelectorAll('.ano').forEach(function(b){
+    b.addEventListener('click',function(){mexeu=true;mostrarAno(b.dataset.ano);});
+    b.addEventListener('keydown',function(ev){if(ev.key==='ArrowLeft'||ev.key==='ArrowRight'){ev.preventDefault();mexeu=true;var o=b.dataset.ano==='2013'?'2021':'2013';mostrarAno(o);document.querySelector('.ano[data-ano="'+o+'"]').focus();}});
+  });
+  if(calmo){ mostrarAno('2021'); }
+  else {
+    linhas.forEach(function(l){l.querySelector('.valor').textContent='0,00%';});
+    document.getElementById('dif').textContent='0,00 p.p.';
+    quandoVisivel(document.getElementById('grafico'),function(){
+      mostrarAno('2013');
+      setTimeout(function(){ if(!mexeu) mostrarAno('2021'); },3800);
+    });
+  }
 
   /* separadores das prioridades */
   var seps=[].slice.call(document.querySelectorAll('.separador'));
