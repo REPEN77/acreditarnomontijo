@@ -73,7 +73,7 @@ a{color:inherit}
 .abertura{position:relative;overflow:hidden;isolation:isolate;background:var(--noite);color:#fff;padding:5.5rem 0 7.5rem;min-height:min(56rem,100vh)}
 .abertura .faixas i{left:60%;width:70%;opacity:.8}
 .abertura .faixas i:nth-child(1){top:38%}.abertura .faixas i:nth-child(2){top:calc(38% + 3.2rem)}
-@media (max-width:44rem){.abertura .faixas i{left:-10%;width:130%}.abertura .faixas i:nth-child(1){top:auto;bottom:3.4rem}.abertura .faixas i:nth-child(2){top:auto;bottom:.2rem}}
+@media (max-width:60rem){.abertura .faixas i{left:-10%;width:130%}.abertura .faixas i:nth-child(1){top:auto;bottom:3.4rem}.abertura .faixas i:nth-child(2){top:auto;bottom:.2rem}}
 .fundo-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08);opacity:.55;pointer-events:none}
 .veu{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(13,43,78,.9) 0%,rgba(13,43,78,.62) 50%,rgba(13,43,78,.3) 100%),linear-gradient(0deg,rgba(8,30,56,.75) 0%,transparent 45%)}
 .pausa{position:absolute;right:1.2rem;bottom:5.6rem;z-index:3;width:2.6rem;height:2.6rem;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(13,43,78,.55);color:#fff;cursor:pointer;display:grid;place-items:center;transition:background .2s,border-color .2s}
@@ -374,10 +374,105 @@ a{color:inherit}
 .topo .topo-botao{padding:.55rem 1.1rem}
 .painel .marca-agua{display:none}
 .painel h3,.painel .objetivo{padding-right:0}
+/* revisão de novembro de 2026 */
+.seccao{isolation:isolate}
+.mancha{z-index:-1}
+:focus-visible{outline:3px solid var(--ambar);outline-offset:3px;border-radius:.35rem}
+.topo nav a:focus-visible{outline-offset:1px}
+@media (max-width:60rem){
+  .topo .contentor{flex-wrap:wrap;row-gap:0;min-height:0;padding:.6rem 0 0}
+  .topo .logo{width:8.5rem}
+  .topo nav{display:flex;flex-wrap:nowrap;order:3;width:calc(100% + 2.5rem);margin:.45rem -1.25rem 0;padding:0 1.25rem .55rem;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;gap:.25rem}
+  .topo nav::-webkit-scrollbar{display:none}
+  .topo nav{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+  .topo nav a{flex:none;font-size:.86rem;padding:.38rem .7rem;background:rgba(255,255,255,.06)}
+  .topo-botao{margin-left:auto}
+  html{scroll-padding-top:7rem}
+}
+@media (max-width:40rem){
+  .painel{padding:1.2rem .9rem}
+  .ficha-eixo .bloco{padding:.8rem .65rem}
+  .medidas li{grid-template-columns:1.7rem 1fr;gap:.55rem;padding:.65rem .6rem}
+  .medidas li::before{width:1.7rem;height:1.7rem;font-size:.9rem}
+  .prazo{grid-column:2}
+  .res-controlos .seg{width:100%;justify-content:space-between}
+  .res-controlos .seg button{flex:1;text-align:center}
+  .res-cartao{padding:1.1rem}
+}
+.rodape-aviso{flex-basis:100%;margin:1.4rem 0 0;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.12);font-size:.84rem;line-height:1.5;color:rgba(255,255,255,.62)}
+.rodape-aviso a{color:#fff}
 .apelo.simples .faixas i{left:52%;width:80%}
 .apelo.simples .faixas i:nth-child(1){top:22%}.apelo.simples .faixas i:nth-child(2){top:calc(22% + 3.2rem)}
 @media (max-width:56rem){.apelo.simples{padding-bottom:7rem}.apelo.simples .faixas i{left:-10%;width:130%}.apelo.simples .faixas i:nth-child(1){top:auto;bottom:2.6rem}.apelo.simples .faixas i:nth-child(2){top:auto;bottom:-.6rem}}
 @media (max-width:44rem){.selo{font-size:.75rem}}
+
+/* explorador de resultados */
+.resultados{margin-top:2.6rem;display:grid;grid-template-columns:1.15fr 1fr;gap:2rem;align-items:start}
+@media (max-width:56rem){.resultados{grid-template-columns:1fr}}
+.res-cartao{background:#fff;border-radius:1rem;box-shadow:0 18px 50px -24px rgba(13,43,78,.35);padding:1.6rem}
+.res-controlos{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:space-between;margin-bottom:1.2rem}
+.seg{display:inline-flex;flex-wrap:wrap;background:var(--nevoa);border-radius:2rem;padding:.25rem;gap:.2rem}
+.seg button{all:unset;cursor:pointer;font-family:var(--ui);font-weight:600;font-size:.88rem;padding:.35rem .85rem;border-radius:2rem;color:var(--suave);transition:background .3s,color .3s}
+.seg.anos-seg button{font-family:var(--display);font-weight:800;font-size:1.02rem;padding:.3rem .75rem}
+.seg button:hover{color:var(--noite)}
+.seg button[aria-selected="true"]{background:var(--noite);color:#fff}
+.seg button:focus-visible{outline:3px solid var(--ambar);outline-offset:2px}
+.res-resumo{margin:1rem 0 0;padding:.8rem 1rem;border-radius:.7rem;background:rgba(242,140,40,.1);font-family:var(--ui);font-size:.95rem}
+.res-resumo b{color:#C46A14}
+.enchimento.cor-ps{background:linear-gradient(90deg,#E2A0A8,#D9737F)}
+.enchimento.cor-psd{background:linear-gradient(90deg,#F5A85A,#F28C28)}
+.enchimento.cor-cdu{background:linear-gradient(90deg,#D98A8A,#B83A3A)}
+.enchimento.cor-mvc{background:linear-gradient(90deg,#5FC2B5,#2A9D8F)}
+.enchimento.cor-ch{background:linear-gradient(90deg,#A7AFD0,#7C86B0)}
+.cor-be{background:#A23B72}.cor-il{background:#2BA8D8}.cor-pan{background:#7FA83A}.cor-cds{background:#3D6FB6}.cor-pctp{background:#8B2E2E}
+.barra.psd{background:rgba(242,140,40,.07);border-radius:.6rem;padding:.35rem .5rem;margin-left:-.5rem;margin-right:-.5rem}
+@media (min-width:40.01rem){.sem-quebra{white-space:nowrap}}
+.lista-leitura{list-style:none;padding:0;margin:1rem 0;display:grid;gap:.6rem}
+.lista-leitura li{background:#fff;border-left:4px solid var(--ambar);border-radius:.6rem;padding:.7rem .9rem;font-size:1rem}
+.lista-leitura b{font-family:var(--ui);color:var(--noite)}
+/* indicadores */
+.kpis-titulo{font-size:clamp(1.5rem,3vw,2rem);color:var(--noite);margin-bottom:1rem}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem}
+.kpi{background:var(--noite);color:#fff;border-radius:1rem;padding:1.1rem 1.1rem .9rem;position:relative;overflow:hidden}
+.kpi::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,#E06A5A,transparent)}
+.kpi-rot{display:block;font-family:var(--ui);font-weight:600;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ardosia-clara)}
+.kpi-val{display:block;font-family:var(--display);font-weight:800;font-size:2.3rem;line-height:1.05;margin:.25rem 0 .1rem}
+.kpi-sub{display:block;font-family:var(--ui);font-size:.82rem;color:#F2A69B;line-height:1.3;min-height:2.1em}
+.spark{display:block;width:100%;height:2.6rem;margin-top:.5rem;overflow:visible}
+.spark path{fill:none;stroke:var(--ambar);stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.6s ease}
+.spark circle{fill:var(--ambar);opacity:0;transition:opacity .4s 1.2s}
+.spark circle.ultimo{fill:#F2A69B;stroke:#fff;stroke-width:1.2}
+.kpis.desenhado .spark path{stroke-dashoffset:0}
+.kpis.desenhado .spark circle{opacity:1}
+.spark-anos{display:flex;justify-content:space-between;font-family:var(--ui);font-size:.66rem;color:rgba(255,255,255,.5);margin-top:.15rem}
+@media (max-width:40rem){.kpis{grid-template-columns:1fr 1fr}.kpi-val{font-size:1.9rem}}
+/* mapa de calor das freguesias */
+.heatmap{display:grid;gap:.45rem}
+.hm-cab,.hm-linha{display:grid;grid-template-columns:minmax(9rem,1.5fr) repeat(4,minmax(3.6rem,1fr)) 4.8rem;gap:.35rem;align-items:center}
+.hm-cab{font-family:var(--ui);font-weight:600;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--azul);padding:0 .6rem}
+.hm-cab span:not(:first-child){text-align:center}
+.hm-linha{all:unset;box-sizing:border-box;display:grid;grid-template-columns:minmax(9rem,1.5fr) repeat(4,minmax(3.6rem,1fr)) 4.8rem;gap:.35rem;align-items:center;cursor:pointer;background:#fff;border:1px solid var(--linha);border-radius:.8rem;padding:.5rem .6rem;transition:border-color .25s,box-shadow .25s,transform .25s}
+.hm-linha:hover{border-color:var(--ardosia);transform:translateX(3px)}
+.hm-linha:focus-visible{outline:3px solid var(--ambar);outline-offset:2px}
+.hm-linha[aria-pressed="true"]{border-color:var(--ambar);box-shadow:0 14px 36px -20px rgba(13,43,78,.45)}
+.hm-nome{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:1.02rem;color:var(--noite);line-height:1.05}
+.hm-cel{display:flex;flex-direction:column;align-items:center;gap:.2rem;padding:.4rem .2rem;border-radius:.5rem;background:rgba(242,140,40,0);transition:background .8s ease}
+.heatmap.aceso .hm-cel{background:rgba(242,140,40,var(--a))}
+.hm-cel b{font-family:var(--display);font-weight:800;font-size:1.05rem;color:var(--noite);font-variant-numeric:tabular-nums}
+.hm-venc{font-style:normal;font-family:var(--ui);font-weight:600;font-size:.62rem;color:#fff;border-radius:2rem;padding:.05rem .4rem;white-space:nowrap}
+.hm-venc.cor-psd{color:var(--noite)}
+.hm-delta{font-family:var(--display);font-weight:800;font-size:1.05rem;text-align:center;border-radius:.5rem;padding:.35rem .2rem}
+.hm-delta.desce{color:#B83A3A;background:rgba(184,58,58,.08)}
+.hm-delta.sobe{color:#2A7D4F;background:rgba(42,125,79,.1)}
+@media (max-width:40rem){
+  .hm-cab,.hm-linha{grid-template-columns:minmax(6.2rem,1.3fr) repeat(4,minmax(2.7rem,1fr)) 3.6rem;gap:.2rem}
+  .hm-nome{font-size:.86rem}.hm-cel b{font-size:.9rem}.hm-venc{font-size:.55rem;padding:.04rem .3rem}.hm-delta{font-size:.9rem}
+  .hm-cab{font-size:.6rem;padding:0 .3rem}.hm-linha{padding:.45rem .35rem}
+}
+.af-anos{margin:.2rem 0 .6rem}
+.af-anos.seg{background:rgba(255,255,255,.1)}
+.af-anos.seg button{color:rgba(255,255,255,.75);font-size:.9rem;padding:.22rem .65rem}
+.af-anos.seg button[aria-selected="true"]{background:var(--ambar);color:var(--noite)}
 </style>
 </head>
 <body>
@@ -433,48 +528,72 @@ a{color:inherit}
   <div class="contentor">
     <div class="cabeca revelar">
       <span class="numero-seccao">01 Ponto de partida</span>
-      <h2>Um partido com base para ganhar</h2>
+      <h2>Queremos recuperar o PSD</h2>
     </div>
     <div class="partida">
       <div class="revelar">
         <p class="citacao-grande">O PSD é grande no Montijo. Precisa outra vez de <em>uma liderança forte</em> e de <em>uma equipa trabalhadora</em>.</p>
-        <p>Os resultados provam-no. Em 2013, numa disputa a três, o PSD ficou a 3,4 pontos de ganhar a Câmara. Em 2021, ficou a pouco mais de três centenas de votos. Em 2025, numa eleição ganha pelo MVC, o PSD/IL foi a terceira força na Assembleia Municipal e ganhou a Junta de Canha.</p>
-        <p>Esta pré-moção é o ponto de partida da moção de estratégia global que a candidatura vai apresentar à eleição da Comissão Política Concelhia. Está aberta aos contributos de militantes e de quadros da sociedade civil.</p>
+        <p>Em 2021, o PSD ficou a pouco mais de três centenas de votos de ganhar a Câmara. Quatro anos depois, teve o pior resultado das últimas quatro eleições autárquicas, na Câmara, na Assembleia Municipal e nas juntas de freguesia.</p>
+        <p>Queremos recuperar o PSD. Esta pré-moção é o ponto de partida da moção de estratégia global que a candidatura vai apresentar à eleição da Comissão Política Concelhia. Está aberta aos contributos de militantes e de quadros da sociedade civil.</p>
       </div>
-      <div class="cartao-branco revelar" data-atraso="1" id="grafico">
-        <div class="grafico-topo">
-          <div class="etiqueta"><span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M9 15.5l2 2 4-4"/></svg></span>Câmara Municipal do Montijo</div>
-          <div class="anos" role="tablist" aria-label="Eleição autárquica">
-            <button type="button" role="tab" class="ano" data-ano="2013" aria-selected="false">2013</button>
-            <button type="button" role="tab" class="ano" data-ano="2021" aria-selected="false">2021</button>
-            <button type="button" role="tab" class="ano" data-ano="2025" aria-selected="true">2025</button>
-          </div>
+      <div class="revelar" data-atraso="1">
+        <h3 class="kpis-titulo">2025 em quatro números</h3>
+        <div class="kpis">
+      <div class="kpi revelar" data-atraso="0">
+        <span class="kpi-rot">Câmara Municipal, 2025</span>
+        <strong class="kpi-val">16,7%</strong>
+        <span class="kpi-sub">−11,1 p.p. face a 2021</span>
+        <svg class="spark" viewBox="0 0 120 40" aria-hidden="true"><path d="M5.0 11.8 L41.7 27.5 L78.3 5.0 L115.0 35.0" pathLength="1"/><circle cx="5.0" cy="11.8" r="2.4"/><circle cx="41.7" cy="27.5" r="2.4"/><circle cx="78.3" cy="5.0" r="2.4"/><circle cx="115.0" cy="35.0" r="3.6" class="ultimo"/></svg><div class="spark-anos"><span>2013</span><span>2017</span><span>2021</span><span>2025</span></div>
+      </div>
+      <div class="kpi revelar" data-atraso="1">
+        <span class="kpi-rot">Votos na Câmara, 2025</span>
+        <strong class="kpi-val">3.917</strong>
+        <span class="kpi-sub">menos 1.630 votos que em 2021. com mais gente a votar</span>
+        <svg class="spark" viewBox="0 0 120 40" aria-hidden="true"><path d="M5.0 27.1 L41.7 35.0 L78.3 5.0 L115.0 31.1" pathLength="1"/><circle cx="5.0" cy="27.1" r="2.4"/><circle cx="41.7" cy="35.0" r="2.4"/><circle cx="78.3" cy="5.0" r="2.4"/><circle cx="115.0" cy="31.1" r="3.6" class="ultimo"/></svg><div class="spark-anos"><span>2013</span><span>2017</span><span>2021</span><span>2025</span></div>
+      </div>
+      <div class="kpi revelar" data-atraso="2">
+        <span class="kpi-rot">Deputados municipais, 2025</span>
+        <strong class="kpi-val">4</strong>
+        <span class="kpi-sub">eram 7 em 2021</span>
+        <svg class="spark" viewBox="0 0 120 40" aria-hidden="true"><path d="M5.0 15.0 L41.7 25.0 L78.3 5.0 L115.0 35.0" pathLength="1"/><circle cx="5.0" cy="15.0" r="2.4"/><circle cx="41.7" cy="25.0" r="2.4"/><circle cx="78.3" cy="5.0" r="2.4"/><circle cx="115.0" cy="35.0" r="3.6" class="ultimo"/></svg><div class="spark-anos"><span>2013</span><span>2017</span><span>2021</span><span>2025</span></div>
+      </div>
+      <div class="kpi revelar" data-atraso="3">
+        <span class="kpi-rot">Mandatos nas freguesias, 2025</span>
+        <strong class="kpi-val">11</strong>
+        <span class="kpi-sub">eram 15 em 2021</span>
+        <svg class="spark" viewBox="0 0 120 40" aria-hidden="true"><path d="M5.0 12.5 L41.7 27.5 L78.3 5.0 L115.0 35.0" pathLength="1"/><circle cx="5.0" cy="12.5" r="2.4"/><circle cx="41.7" cy="27.5" r="2.4"/><circle cx="78.3" cy="5.0" r="2.4"/><circle cx="115.0" cy="35.0" r="3.6" class="ultimo"/></svg><div class="spark-anos"><span>2013</span><span>2017</span><span>2021</span><span>2025</span></div>
+      </div>
         </div>
-        <div class="barras" id="barras">
-          <div class="barra mvc" data-partido="mvc"><div class="linha-topo"><span class="nome-partido"><b>MVC</b><small></small></span><span class="valor">0,00%</span></div><div class="pista"><div class="enchimento"></div></div></div>
-          <div class="barra ch" data-partido="ch"><div class="linha-topo"><span class="nome-partido"><b>Chega</b><small></small></span><span class="valor">0,00%</span></div><div class="pista"><div class="enchimento"></div></div></div>
-          <div class="barra ps" data-partido="ps"><div class="linha-topo"><span class="nome-partido"><b>PS</b><small></small></span><span class="valor">0,00%</span></div><div class="pista"><div class="enchimento"></div></div></div>
-          <div class="barra psd" data-partido="psd"><div class="linha-topo"><span class="nome-partido"><b>PSD</b><small></small></span><span class="valor">0,00%</span></div><div class="pista"><div class="enchimento"></div></div></div>
-          <div class="barra cdu" data-partido="cdu"><div class="linha-topo"><span class="nome-partido"><b>CDU</b><small></small></span><span class="valor">0,00%</span></div><div class="pista"><div class="enchimento"></div></div></div>
-        </div>
-        <div class="diferenca">
-          <span class="grande" id="dif">1,75 p.p.</span>
-          <p id="dif-texto">separaram o PSD da vitória na Câmara em 2021, pouco mais de três centenas de votos.</p>
-        </div>
-        <p class="fonte" id="fonte-grafico">Fonte: Diário de Notícias e Observador, com base nos resultados oficiais. Em 2021 o PSD concorreu coligado com o CDS e a Aliança.</p>
       </div>
     </div>
-    <div class="am revelar" id="assembleia">
-      <div class="am-grafico">
-        <div class="etiqueta"><span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h10v7H8l-4 3V5z"/><path d="M14 9h6v8l-3-2h-6v-3"/></svg></span>Assembleia Municipal do Montijo, 2025</div>
-        <svg class="hemiciclo" viewBox="0 0 240 126" role="img" aria-label="Assembleia Municipal do Montijo, 21 eleitos em 2025: Chega 6, MVC 5, PSD/IL 4, PS 4, CDU 1, Livre 1"><circle class="lugar cor-cdu" cx="56.0" cy="112.0" r="10.5" style="--i:0"/><circle class="lugar cor-l" cx="26.0" cy="112.0" r="10.5" style="--i:1"/><circle class="lugar cor-ps" cx="29.8" cy="85.5" r="10.5" style="--i:2"/><circle class="lugar cor-ps" cx="60.9" cy="87.5" r="10.5" style="--i:3"/><circle class="lugar cor-ps" cx="40.9" cy="61.2" r="10.5" style="--i:4"/><circle class="lugar cor-ps" cx="74.7" cy="66.7" r="10.5" style="--i:5"/><circle class="lugar cor-mvc" cx="58.4" cy="41.0" r="10.5" style="--i:6"/><circle class="lugar cor-mvc" cx="81.0" cy="26.5" r="10.5" style="--i:7"/><circle class="lugar cor-mvc" cx="95.5" cy="52.9" r="10.5" style="--i:8"/><circle class="lugar cor-mvc" cx="106.6" cy="19.0" r="10.5" style="--i:9"/><circle class="lugar cor-mvc" cx="120.0" cy="48.0" r="10.5" style="--i:10"/><circle class="lugar cor-psd" cx="133.4" cy="19.0" r="10.5" style="--i:11"/><circle class="lugar cor-psd" cx="144.5" cy="52.9" r="10.5" style="--i:12"/><circle class="lugar cor-psd" cx="159.0" cy="26.5" r="10.5" style="--i:13"/><circle class="lugar cor-psd" cx="181.6" cy="41.0" r="10.5" style="--i:14"/><circle class="lugar cor-ch" cx="165.3" cy="66.7" r="10.5" style="--i:15"/><circle class="lugar cor-ch" cx="199.1" cy="61.2" r="10.5" style="--i:16"/><circle class="lugar cor-ch" cx="179.1" cy="87.5" r="10.5" style="--i:17"/><circle class="lugar cor-ch" cx="210.2" cy="85.5" r="10.5" style="--i:18"/><circle class="lugar cor-ch" cx="214.0" cy="112.0" r="10.5" style="--i:19"/><circle class="lugar cor-ch" cx="184.0" cy="112.0" r="10.5" style="--i:20"/></svg>
-        <p class="am-total"><strong>21</strong> deputados municipais eleitos</p>
+
+    <div class="resultados" id="resultados">
+      <div class="res-cartao revelar" id="grafico">
+        <div class="res-controlos">
+          <div class="seg" role="tablist" aria-label="Órgão">
+            <button type="button" role="tab" class="res-orgao" data-orgao="cm" aria-selected="true">Câmara</button>
+            <button type="button" role="tab" class="res-orgao" data-orgao="am" aria-selected="false" aria-label="Assembleia Municipal">Assembleia</button>
+            <button type="button" role="tab" class="res-orgao" data-orgao="af" aria-selected="false">Juntas</button>
+          </div>
+          <div class="seg anos-seg" role="tablist" aria-label="Ano">
+            <button type="button" role="tab" class="res-ano" data-ano="2013" aria-selected="false">2013</button>
+            <button type="button" role="tab" class="res-ano" data-ano="2017" aria-selected="false">2017</button>
+            <button type="button" role="tab" class="res-ano" data-ano="2021" aria-selected="false">2021</button>
+            <button type="button" role="tab" class="res-ano" data-ano="2025" aria-selected="true">2025</button>
+          </div>
+        </div>
+        <div class="barras" id="barras" aria-live="polite"></div>
+        <p class="res-resumo" id="res-resumo"></p>
       </div>
-      <div class="am-texto">
-        <h3>O PSD/IL foi a terceira força</h3>
-        <p>Quatro deputados municipais e mais 8 votos do que o PS, depois da recontagem.</p>
-        <ul class="am-legenda"><li><span class="ponto cor-ch"></span><span class="lp-nome">Chega</span><span class="lp-mand">6</span><span class="lp-votos">6.046 votos</span></li><li><span class="ponto cor-mvc"></span><span class="lp-nome">MVC</span><span class="lp-mand">5</span><span class="lp-votos">6.002 votos</span></li><li><span class="ponto cor-psd"></span><span class="lp-nome">PSD/IL</span><span class="lp-mand">4</span><span class="lp-votos">4.023 votos</span></li><li><span class="ponto cor-ps"></span><span class="lp-nome">PS</span><span class="lp-mand">4</span><span class="lp-votos">4.015 votos</span></li><li><span class="ponto cor-cdu"></span><span class="lp-nome">CDU</span><span class="lp-mand">1</span><span class="lp-votos">1.799 votos</span></li><li><span class="ponto cor-l"></span><span class="lp-nome">Livre</span><span class="lp-mand">1</span><span class="lp-votos">1.031 votos</span></li></ul>
-        <p class="fonte">Fonte: RTP, com os resultados da recontagem de 17 de outubro de 2025. Aos 21 eleitos juntam-se os 5 presidentes de junta.</p>
+      <div class="revelar" data-atraso="1">
+        <h3 class="kpis-titulo">Doze anos, quatro eleições</h3>
+        <p>Escolhe o órgão e o ano para ver todos os resultados. O PSD está assinalado a laranja.</p>
+        <ul class="lista-leitura">
+          <li><b>Câmara:</b> 25,2% em 2013, 19,4% em 2017, 27,7% em 2021 e 16,7% em 2025.</li>
+          <li><b>Assembleia Municipal:</b> 6, 5, 7 e agora 4 deputados.</li>
+          <li><b>Juntas de freguesia:</b> 14, 12, 15 e agora 11 mandatos. Só Canha tem presidente do PSD.</li>
+        </ul>
+        <p class="fonte">Fontes: resultados oficiais, via Wikipédia (2013 a 2021) e RTP (2025, após a recontagem). O PSD concorreu sozinho em 2013, com o CDS em 2017, com o CDS e a Aliança em 2021 e com a IL em 2025.</p>
       </div>
     </div>
   </div>
@@ -542,28 +661,23 @@ a{color:inherit}
     <div class="cabeca revelar">
       <span class="numero-seccao">03 Cinco freguesias</span>
       <h2>Do Tejo ao montado</h2>
-      <p>Estar presente todo o ano nas cinco freguesias do concelho, da frente ribeirinha aos campos de Canha e Pegões.</p>
+      <p>O resultado do PSD em cada assembleia de freguesia, de 2013 a 2025, e quem ganhou a junta. Escolhe uma freguesia para ver todos os resultados.</p>
     </div>
     <div class="freguesias">
       <div class="revelar">
-        <div class="juntas-resumo">
-          <span class="jr-titulo">Juntas de freguesia em 2025</span>
-          <span class="jr-chip cor-mvc">MVC <b>3</b></span>
-          <span class="jr-chip cor-ch">Chega <b>1</b></span>
-          <span class="jr-chip cor-psd">PSD/IL <b>1</b></span>
+        <div class="heatmap" role="group" aria-label="Resultado do PSD nas assembleias de freguesia, 2013 a 2025">
+          <div class="hm-cab"><span>Freguesia</span><span>2013</span><span>2017</span><span>2021</span><span>2025</span><span>2021 → 2025</span></div>
+          <button class="freg hm-linha" type="button" aria-pressed="false" data-nome="Montijo e Afonsoeiro" data-pop="41404" data-anos="{&quot;2013&quot;: [[&quot;ps&quot;, 27.66, 6], [&quot;cdu&quot;, 26.48, 6], [&quot;psd&quot;, 23.28, 5], [&quot;be&quot;, 8.46, 2], [&quot;pctp&quot;, 2.73, 0], [&quot;cds&quot;, 2.64, 0]], &quot;2017&quot;: [[&quot;ps&quot;, 46.3, 10], [&quot;cdu&quot;, 19.65, 4], [&quot;psd&quot;, 18.47, 4], [&quot;be&quot;, 6.85, 1]], &quot;2021&quot;: [[&quot;ps&quot;, 32.11, 7], [&quot;psd&quot;, 25.64, 5], [&quot;cdu&quot;, 18.97, 4], [&quot;ch&quot;, 7.09, 1], [&quot;be&quot;, 5.62, 1], [&quot;il&quot;, 5.39, 1]], &quot;2025&quot;: [[&quot;mvc&quot;, 26.9, 6], [&quot;ch&quot;, 24.4, 5], [&quot;psd&quot;, 17.12, 3], [&quot;ps&quot;, 15.4, 3], [&quot;cdu&quot;, 8.8, 1], [&quot;l&quot;, 4.6, 1]]}"><span class="hm-nome">Montijo e Afonsoeiro</span><span class="hm-cel" style="--a:0.52"><b>23,3%</b><i class="hm-venc cor-ps">PS</i></span><span class="hm-cel" style="--a:0.41"><b>18,5%</b><i class="hm-venc cor-ps">PS</i></span><span class="hm-cel" style="--a:0.57"><b>25,6%</b><i class="hm-venc cor-ps">PS</i></span><span class="hm-cel" style="--a:0.38"><b>17,1%</b><i class="hm-venc cor-mvc">MVC</i></span><span class="hm-delta desce">▼ 8,5</span></button>
+          <button class="freg hm-linha" type="button" aria-pressed="false" data-nome="Atalaia e Alto Estanqueiro-Jardia" data-pop="5379" data-anos="{&quot;2013&quot;: [[&quot;ps&quot;, 38.53, 4], [&quot;cdu&quot;, 33.27, 4], [&quot;psd&quot;, 16.57, 1], [&quot;cds&quot;, 3.55, 0]], &quot;2017&quot;: [[&quot;ps&quot;, 50.35, 5], [&quot;cdu&quot;, 27.98, 3], [&quot;psd&quot;, 16.33, 1]], &quot;2021&quot;: [[&quot;ps&quot;, 38.15, 5], [&quot;psd&quot;, 21.95, 2], [&quot;cdu&quot;, 19.84, 2], [&quot;ch&quot;, 7.34, 0], [&quot;be&quot;, 5.8, 0]], &quot;2025&quot;: [[&quot;ch&quot;, 25.6, 3], [&quot;ps&quot;, 22.5, 2], [&quot;mvc&quot;, 21.9, 2], [&quot;psd&quot;, 20.79, 2], [&quot;cdu&quot;, 6.3, 0]]}"><span class="hm-nome">Atalaia e Alto <span class="sem-quebra">Estanqueiro-Jardia</span></span><span class="hm-cel" style="--a:0.37"><b>16,6%</b><i class="hm-venc cor-ps">PS</i></span><span class="hm-cel" style="--a:0.36"><b>16,3%</b><i class="hm-venc cor-ps">PS</i></span><span class="hm-cel" style="--a:0.49"><b>22,0%</b><i class="hm-venc cor-ps">PS</i></span><span class="hm-cel" style="--a:0.46"><b>20,8%</b><i class="hm-venc cor-ch">Chega</i></span><span class="hm-delta desce">▼ 1,2</span></button>
+          <button class="freg hm-linha" type="button" aria-pressed="false" data-nome="Pegões" data-pop="4090" data-anos="{&quot;2013&quot;: [[&quot;ps&quot;, 50.3, 6], [&quot;psd&quot;, 23.83, 2], [&quot;cdu&quot;, 15.4, 1], [&quot;cds&quot;, 5.53, 0]], &quot;2017&quot;: [[&quot;ps&quot;, 45.38, 4], [&quot;psd&quot;, 40.07, 4], [&quot;cdu&quot;, 10.54, 1]], &quot;2021&quot;: [[&quot;ps&quot;, 44.52, 5], [&quot;psd&quot;, 39.61, 4], [&quot;cdu&quot;, 7.48, 0], [&quot;ch&quot;, 4.66, 0]], &quot;2025&quot;: [[&quot;mvc&quot;, 28.9, 3], [&quot;ch&quot;, 28.4, 3], [&quot;ps&quot;, 25.5, 2], [&quot;psd&quot;, 8.71, 1], [&quot;cdu&quot;, 3.3, 0]]}"><span class="hm-nome">Pegões</span><span class="hm-cel" style="--a:0.53"><b>23,8%</b><i class="hm-venc cor-ps">PS</i></span><span class="hm-cel" style="--a:0.85"><b>40,1%</b><i class="hm-venc cor-ps">PS</i></span><span class="hm-cel" style="--a:0.85"><b>39,6%</b><i class="hm-venc cor-ps">PS</i></span><span class="hm-cel" style="--a:0.19"><b>8,7%</b><i class="hm-venc cor-mvc">MVC</i></span><span class="hm-delta desce">▼ 30,9</span></button>
+          <button class="freg hm-linha" type="button" aria-pressed="false" data-nome="Sarilhos Grandes" data-pop="3243" data-anos="{&quot;2013&quot;: [[&quot;cdu&quot;, 40.37, 4], [&quot;ps&quot;, 31.18, 3], [&quot;psd&quot;, 19.85, 2], [&quot;cds&quot;, 1.87, 0]], &quot;2017&quot;: [[&quot;ps&quot;, 46.42, 5], [&quot;cdu&quot;, 35.69, 3], [&quot;psd&quot;, 14.48, 1]], &quot;2021&quot;: [[&quot;cdu&quot;, 36.58, 4], [&quot;ps&quot;, 35.2, 4], [&quot;psd&quot;, 16.95, 1], [&quot;ch&quot;, 5.52, 0]], &quot;2025&quot;: [[&quot;mvc&quot;, 32.8, 3], [&quot;ch&quot;, 22.0, 2], [&quot;ps&quot;, 18.0, 2], [&quot;psd&quot;, 12.53, 1], [&quot;cdu&quot;, 11.2, 1]]}"><span class="hm-nome">Sarilhos Grandes</span><span class="hm-cel" style="--a:0.44"><b>19,9%</b><i class="hm-venc cor-cdu">CDU</i></span><span class="hm-cel" style="--a:0.32"><b>14,5%</b><i class="hm-venc cor-ps">PS</i></span><span class="hm-cel" style="--a:0.38"><b>17,0%</b><i class="hm-venc cor-cdu">CDU</i></span><span class="hm-cel" style="--a:0.28"><b>12,5%</b><i class="hm-venc cor-mvc">MVC</i></span><span class="hm-delta desce">▼ 4,5</span></button>
+          <button class="freg hm-linha" type="button" aria-pressed="false" data-nome="Canha" data-pop="1566" data-anos="{&quot;2013&quot;: [[&quot;psd&quot;, 36.94, 4], [&quot;ps&quot;, 22.87, 2], [&quot;cdu&quot;, 19.94, 2], [&quot;cds&quot;, 16.07, 1]], &quot;2017&quot;: [[&quot;ps&quot;, 59.76, 6], [&quot;psd&quot;, 21.65, 2], [&quot;cdu&quot;, 16.01, 1]], &quot;2021&quot;: [[&quot;ps&quot;, 55.22, 5], [&quot;psd&quot;, 30.02, 3], [&quot;cdu&quot;, 9.95, 1], [&quot;ch&quot;, 1.93, 0]], &quot;2025&quot;: [[&quot;psd&quot;, 35.22, 4], [&quot;ps&quot;, 30.4, 3], [&quot;mvc&quot;, 18.1, 2], [&quot;ch&quot;, 8.7, 0], [&quot;cdu&quot;, 4.1, 0]]}"><span class="hm-nome">Canha</span><span class="hm-cel" style="--a:0.82"><b>36,9%</b><i class="hm-venc cor-psd">PSD</i></span><span class="hm-cel" style="--a:0.48"><b>21,7%</b><i class="hm-venc cor-ps">PS</i></span><span class="hm-cel" style="--a:0.67"><b>30,0%</b><i class="hm-venc cor-ps">PS</i></span><span class="hm-cel" style="--a:0.78"><b>35,2%</b><i class="hm-venc cor-psd">PSD/IL</i></span><span class="hm-delta sobe">▲ 5,2</span></button>
         </div>
-        <ul class="lista-freg">
-          <li><button class="freg" type="button" aria-pressed="false" data-nome="Montijo e Afonsoeiro" data-pop="41404" data-nota="Junta ganha pelo MVC em 2025" data-venc="mvc" data-af="{&quot;mvc&quot;: 26.9, &quot;ch&quot;: 24.4, &quot;psd&quot;: 17.1, &quot;ps&quot;: 15.4, &quot;cdu&quot;: 8.8}"><span class="linha-topo"><span class="nome">Montijo e Afonsoeiro <span class="chip-junta cor-mvc">MVC</span></span><span class="pop">41 404</span></span><span class="pista" aria-hidden="true"><span class="enchimento" style="display:block"></span></span></button></li>
-          <li><button class="freg" type="button" aria-pressed="false" data-nome="Atalaia e Alto Estanqueiro-Jardia" data-pop="5379" data-nota="Junta ganha pelo Chega em 2025" data-venc="ch" data-af="{&quot;ch&quot;: 25.6, &quot;ps&quot;: 22.5, &quot;mvc&quot;: 21.9, &quot;psd&quot;: 20.8, &quot;cdu&quot;: 6.3}"><span class="linha-topo"><span class="nome">Atalaia e Alto <span style="white-space:nowrap">Estanqueiro-Jardia</span> <span class="chip-junta cor-ch">Chega</span></span><span class="pop">5 379</span></span><span class="pista" aria-hidden="true"><span class="enchimento" style="display:block"></span></span></button></li>
-          <li><button class="freg" type="button" aria-pressed="false" data-nome="Pegões" data-pop="4090" data-nota="Junta ganha pelo MVC em 2025" data-venc="mvc" data-af="{&quot;mvc&quot;: 28.9, &quot;ch&quot;: 28.4, &quot;ps&quot;: 25.5, &quot;psd&quot;: 8.7, &quot;cdu&quot;: 3.3}"><span class="linha-topo"><span class="nome">Pegões <span class="chip-junta cor-mvc">MVC</span></span><span class="pop">4 090</span></span><span class="pista" aria-hidden="true"><span class="enchimento" style="display:block"></span></span></button></li>
-          <li><button class="freg" type="button" aria-pressed="false" data-nome="Sarilhos Grandes" data-pop="3243" data-nota="Junta ganha pelo MVC em 2025" data-venc="mvc" data-af="{&quot;mvc&quot;: 32.8, &quot;ch&quot;: 22.0, &quot;ps&quot;: 18.0, &quot;psd&quot;: 12.5, &quot;cdu&quot;: 11.2}"><span class="linha-topo"><span class="nome">Sarilhos Grandes <span class="chip-junta cor-mvc">MVC</span></span><span class="pop">3 243</span></span><span class="pista" aria-hidden="true"><span class="enchimento" style="display:block"></span></span></button></li>
-          <li><button class="freg" type="button" aria-pressed="false" data-nome="Canha" data-pop="1566" data-nota="Junta ganha pelo PSD/IL em 2025" data-venc="psd" data-af="{&quot;psd&quot;: 35.2, &quot;ps&quot;: 30.4, &quot;mvc&quot;: 18.1, &quot;ch&quot;: 8.7, &quot;cdu&quot;: 4.1}"><span class="linha-topo"><span class="nome">Canha <span class="chip-junta cor-psd">PSD/IL</span></span><span class="pop">1 566</span></span><span class="pista" aria-hidden="true"><span class="enchimento" style="display:block"></span></span></button></li>
-        </ul>
         <div class="leitura">
           <span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
-          <p>Cerca de três em cada quatro habitantes do concelho vivem em Montijo e Afonsoeiro. Pegões e Canha, a nascente, ocupam a maior parte do território.</p>
+          <p>Entre 2021 e 2025, o PSD desceu em quatro das cinco freguesias. A maior queda foi em Pegões, de 39,6% para 8,7%. Canha foi a exceção: o PSD voltou a ganhar a junta, como em 2013.</p>
         </div>
-        <p class="fonte">População: INE, Censos 2021. Assembleias de freguesia 2025: SGMAI, via Observador. Fotografias: Wikimedia Commons, ver <a href="creditos.html">créditos</a>.</p>
+        <p class="fonte">Assembleias de freguesia: RTP (2013 e 2017), Wikipédia (2021) e SGMAI via Observador (2025). População: INE, Censos 2021. Fotografias: Wikimedia Commons, ver <a href="creditos.html">créditos</a>.</p>
       </div>
       <div class="detalhe revelar" data-atraso="1" aria-live="polite">
         <div class="fotos-freg" aria-hidden="true">
@@ -580,7 +694,13 @@ a{color:inherit}
           <div><dt>População em 2021</dt><dd class="gigante" id="d-pop">41 404</dd></div>
         </dl>
         <div class="af">
-          <span class="af-titulo">Assembleia de Freguesia, 2025</span>
+          <span class="af-titulo">Assembleia de Freguesia</span>
+          <div class="seg af-anos" role="tablist" aria-label="Ano">
+            <button type="button" role="tab" class="af-ano" data-ano="2013" aria-selected="false">2013</button>
+            <button type="button" role="tab" class="af-ano" data-ano="2017" aria-selected="false">2017</button>
+            <button type="button" role="tab" class="af-ano" data-ano="2021" aria-selected="false">2021</button>
+            <button type="button" role="tab" class="af-ano" data-ano="2025" aria-selected="true">2025</button>
+          </div>
           <div id="d-af"></div>
         </div>
         <p class="legenda" id="d-legenda"></p>
@@ -649,6 +769,7 @@ a{color:inherit}
       <a href="privacidade.html">Privacidade</a>
       <a href="creditos.html">Créditos das imagens</a>
     </nav>
+    <p class="rodape-aviso">Este site é da responsabilidade da candidatura Acreditar no Montijo! e não é um sítio oficial do Partido Social Democrata. Não usamos cookies nem medimos visitas. <a href="privacidade.html">Política de privacidade</a>.</p>
   </div>
 </footer>
 <script>
@@ -702,61 +823,52 @@ a{color:inherit}
     });
   });
 
-  /* resultados da Câmara: 2013, 2021 e 2025 */
-  var ELEICOES={
-    '2013':{dec:2,v:{ps:28.59,cdu:26.02,psd:25.22},m:{ps:3,cdu:2,psd:2},r:{psd:'PSD'},dif:3.37,
-      texto:'separaram o PSD da vitória na Câmara em 2013, numa disputa a três.',
-      fonte:'Fonte: resultados oficiais das autárquicas de 2013 (Wikipédia) e Diário de Notícias. Em 2013 o CDS concorreu sozinho.'},
-    '2021':{dec:2,v:{ps:29.49,psd:27.74,cdu:19.40},m:{ps:3,psd:2,cdu:2},r:{psd:'PSD'},dif:1.75,
-      texto:'separaram o PSD da vitória na Câmara em 2021, pouco mais de três centenas de votos.',
-      fonte:'Fonte: Diário de Notícias e Observador, com base nos resultados oficiais. Em 2021 o PSD concorreu coligado com o CDS e a Aliança.'},
-    '2025':{dec:1,v:{mvc:27.5,ch:24.8,ps:17.2,psd:16.7},m:{mvc:3,ch:2,ps:1,psd:1},r:{psd:'PSD/IL'},dif:10.8,
-      texto:'separaram o PSD/IL da vitória na Câmara em 2025, eleição ganha pelo MVC.',
-      fonte:'Fonte: SGMAI, via Observador. A recontagem de 17 de outubro de 2025 alterou poucos votos e nenhum mandato.'}
-  };
-  var mexeu=false, linhas=document.querySelectorAll('#barras .barra'), tempos=[];
-  function mostrarAno(ano){
-    var e=ELEICOES[ano]; if(!e) return;
-    document.querySelectorAll('.ano').forEach(function(b){b.setAttribute('aria-selected',b.dataset.ano===ano);});
-    var ordem=Object.keys(e.v).sort(function(a,b){return e.v[b]-e.v[a];});
-    linhas.forEach(function(l){
-      var p=l.dataset.partido, val=l.querySelector('.valor');
-      if(!(p in e.v)){ l.hidden=true; l.querySelector('.enchimento').style.width='0'; val.dataset.v='0'; return; }
-      l.hidden=false;
-      var alvo=e.v[p], de=parseFloat(val.dataset.v||'0');
-      l.style.order=ordem.indexOf(p);
-      if(e.r[p]) l.querySelector('.nome-partido b').textContent=e.r[p];
-      var m=e.m[p]; l.querySelector('.nome-partido small').textContent=m+(m===1?' vereador':' vereadores');
-      requestAnimationFrame(function(){ l.querySelector('.enchimento').style.width=(alvo/32*100)+'%'; });
-      val.dataset.v=alvo;
-      animar(1200,function(k){val.textContent=fmt(de+(alvo-de)*k,e.dec)+'%';});
-    });
-    var dif=document.getElementById('dif'), d0=parseFloat(dif.dataset.v||'0');
-    dif.dataset.v=e.dif;
-    animar(1200,function(k){dif.textContent=fmt(d0+(e.dif-d0)*k,e.dec)+' p.p.';});
-    document.getElementById('dif-texto').textContent=e.texto;
-    document.getElementById('fonte-grafico').textContent=e.fonte;
+  /* explorador de resultados: câmara, assembleia municipal e juntas, 2013 a 2025 */
+  var ORGAOS={"cm": {"nome": "Câmara Municipal", "eleitos": ["vereador", "vereadores"], "anos": {"2013": [["ps", 28.59, 3], ["cdu", 26.02, 2], ["psd", 25.22, 2], ["be", 6.56, 0], ["cds", 2.9, 0], ["pctp", 2.58, 0]], "2017": [["ps", 45.42, 4], ["cdu", 20.11, 2], ["psd", 19.44, 1], ["be", 5.08, 0]], "2021": [["ps", 29.49, 3], ["psd", 27.74, 2], ["cdu", 19.4, 2], ["ch", 6.6, 0], ["il", 4.36, 0], ["be", 4.14, 0], ["pan", 3.17, 0]], "2025": [["mvc", 27.43, 3], ["ch", 24.81, 2], ["ps", 17.25, 1], ["psd", 16.68, 1], ["cdu", 7.21, 0], ["l", 3.43, 0]]}}, "am": {"nome": "Assembleia Municipal", "eleitos": ["deputado", "deputados"], "anos": {"2013": [["ps", 28.77, 7], ["cdu", 26.37, 6], ["psd", 23.19, 6], ["be", 7.55, 2], ["cds", 3.27, 0]], "2017": [["ps", 43.21, 10], ["psd", 19.94, 5], ["cdu", 19.84, 5], ["be", 6.09, 1], ["pan", 3.18, 0]], "2021": [["ps", 29.29, 7], ["psd", 26.52, 7], ["cdu", 18.86, 4], ["ch", 7.35, 1], ["be", 4.83, 1], ["il", 4.66, 1], ["pan", 3.74, 0]], "2025": [["ch", 25.75, 6], ["mvc", 25.56, 5], ["psd", 17.13, 4], ["ps", 17.1, 4], ["cdu", 7.66, 1], ["l", 4.39, 1]]}}, "af": {"nome": "Juntas de freguesia", "eleitos": ["mandato", "mandatos"], "anos": {"2013": [["ps", 30.88, 21, 3], ["cdu", 26.86, 17, 1], ["psd", 22.96, 14, 1], ["be", 5.92, 2, 0], ["cds", 3.47, 1, 0]], "2017": [["ps", 47.09, 30, 5], ["cdu", 20.57, 12, 0], ["psd", 19.97, 12, 0], ["be", 4.92, 1, 0]], "2021": [["ps", 34.54, 26, 4], ["psd", 25.95, 15, 0], ["cdu", 18.98, 11, 1], ["ch", 6.67, 1, 0], ["be", 4.69, 1, 0], ["il", 3.97, 1, 0]], "2025": [["mvc", 26.62, 16, 3], ["ch", 24.19, 13, 1], ["ps", 17.53, 12, 0], ["psd", 17.13, 11, 1], ["cdu", 8.13, 2, 0], ["l", 3.31, 1, 0]]}}};
+  var ROTULO_PSD={"2013": "PSD", "2017": "PSD/CDS", "2021": "PSD/CDS/A", "2025": "PSD/IL"};
+  var NOMES={"ps": "PS", "psd": "PSD", "cdu": "CDU", "mvc": "MVC", "ch": "Chega", "be": "BE", "il": "IL", "pan": "PAN", "l": "Livre", "cds": "CDS", "pctp": "PCTP/MRPP"};
+
+  var orgaoAtual='cm', anoAtual='2025', mexeuRes=false, temposRes=[];
+  var caixaBarras=document.getElementById('barras'), poolBarras={};
+  function nomeP(p,ano){ return p==='psd'?ROTULO_PSD[ano]:NOMES[p]; }
+  function linhaBarra(p){
+    if(poolBarras[p]) return poolBarras[p];
+    var d=document.createElement('div'); d.className='barra '+p; d.dataset.partido=p;
+    d.innerHTML='<div class="linha-topo"><span class="nome-partido"><b></b><small></small></span><span class="valor">0,00%</span></div><div class="pista"><div class="enchimento cor-'+p+'"></div></div>';
+    caixaBarras.appendChild(d); poolBarras[p]=d; return d;
   }
-  var anos=['2013','2021','2025'];
-  document.querySelectorAll('.ano').forEach(function(b){
-    b.addEventListener('click',function(){mexeu=true;tempos.forEach(clearTimeout);mostrarAno(b.dataset.ano);});
-    b.addEventListener('keydown',function(ev){
-      var i=anos.indexOf(b.dataset.ano), n=null;
-      if(ev.key==='ArrowRight') n=anos[(i+1)%3]; if(ev.key==='ArrowLeft') n=anos[(i+2)%3];
-      if(n){ev.preventDefault();mexeu=true;tempos.forEach(clearTimeout);mostrarAno(n);document.querySelector('.ano[data-ano="'+n+'"]').focus();}
+  function mostrarRes(orgao,ano){
+    var o=ORGAOS[orgao], lista=o.anos[ano]; orgaoAtual=orgao; anoAtual=ano;
+    document.querySelectorAll('.res-orgao').forEach(function(b){b.setAttribute('aria-selected',b.dataset.orgao===orgao);});
+    document.querySelectorAll('.res-ano').forEach(function(b){b.setAttribute('aria-selected',b.dataset.ano===ano);});
+    var presentes={};
+    lista.forEach(function(r,i){
+      var p=r[0], l=linhaBarra(p), val=l.querySelector('.valor'), de=parseFloat(val.dataset.v||'0'); presentes[p]=1;
+      l.hidden=false; l.style.order=i;
+      l.querySelector('b').textContent=nomeP(p,ano);
+      var n=r[2], txt=n+' '+(n===1?o.eleitos[0]:o.eleitos[1]);
+      if(r.length>3 && r[3]>0) txt+=', '+r[3]+(r[3]===1?' junta':' juntas');
+      l.querySelector('small').textContent=txt;
+      requestAnimationFrame(function(){ l.querySelector('.enchimento').style.width=(r[1]/50*100)+'%'; });
+      val.dataset.v=r[1];
+      animar(1100,function(k){val.textContent=fmt(de+(r[1]-de)*k,2)+'%';});
     });
-  });
-  if(calmo){ mostrarAno('2025'); }
+    Object.keys(poolBarras).forEach(function(p){ if(!presentes[p]){ var l=poolBarras[p]; l.hidden=true; l.querySelector('.enchimento').style.width='0'; l.querySelector('.valor').dataset.v='0'; } });
+    var pos=lista.findIndex(function(r){return r[0]==='psd';})+1, rp=lista[pos-1];
+    var eleitos=rp[2]+' '+(rp[2]===1?o.eleitos[0]:o.eleitos[1]);
+    document.getElementById('res-resumo').innerHTML='<b>'+nomeP('psd',ano)+'</b> em '+ano+': '+pos+'.º lugar, '+fmt(rp[1],2)+'%, '+eleitos+(rp.length>3?(', '+rp[3]+(rp[3]===1?' junta':' juntas')):'')+'.';
+  }
+  document.querySelectorAll('.res-orgao').forEach(function(b){ b.addEventListener('click',function(){ mexeuRes=true; temposRes.forEach(clearTimeout); mostrarRes(b.dataset.orgao,anoAtual); }); });
+  document.querySelectorAll('.res-ano').forEach(function(b){ b.addEventListener('click',function(){ mexeuRes=true; temposRes.forEach(clearTimeout); mostrarRes(orgaoAtual,b.dataset.ano); }); });
+  if(calmo){ mostrarRes('cm','2025'); }
   else {
-    quandoVisivel(document.getElementById('grafico'),function(){
-      mostrarAno('2013');
-      tempos.push(setTimeout(function(){ if(!mexeu) mostrarAno('2021'); },3800));
-      tempos.push(setTimeout(function(){ if(!mexeu) mostrarAno('2025'); },7600));
+    quandoVisivel(document.getElementById('resultados'),function(){
+      ['2013','2017','2021','2025'].forEach(function(a,i){ temposRes.push(setTimeout(function(){ if(!mexeuRes||i===0) mostrarRes(orgaoAtual,a); }, i*2600)); });
     });
   }
 
-  /* hemiciclo da Assembleia Municipal */
-  quandoVisivel(document.getElementById('assembleia'),function(){document.getElementById('assembleia').classList.add('cheio');});
+  /* indicadores: linhas a desenhar */
+  quandoVisivel(document.querySelector('.kpis'),function(){ document.querySelector('.kpis').classList.add('desenhado'); });
 
   /* separadores das prioridades */
   var seps=[].slice.call(document.querySelectorAll('.separador'));
@@ -792,11 +904,19 @@ a{color:inherit}
   mostrar(0);
   if(rodar) quandoVisivel(document.querySelector('.prioridades'),function(){temporizador=requestAnimationFrame(ciclo);});
 
-  /* freguesias */
+  /* freguesias: comparação 2013 a 2025 e ficha com resultados por ano */
   var fregs=[].slice.call(document.querySelectorAll('.freg'));
-  var maxPop=Math.max.apply(null,fregs.map(function(f){return +f.dataset.pop;}));
-  var dNome=document.getElementById('d-nome'), dPop=document.getElementById('d-pop');
+  var dNome=document.getElementById('d-nome'), dPop=document.getElementById('d-pop'), anoFreg='2025', fregAtual=null;
+  function barrasFreg(){
+    var lista=JSON.parse(fregAtual.dataset.anos)[anoFreg], caixa=document.getElementById('d-af');
+    document.querySelectorAll('.af-ano').forEach(function(b){b.setAttribute('aria-selected',b.dataset.ano===anoFreg);});
+    caixa.innerHTML=lista.map(function(r){var p=r[0];return '<div class="af-linha'+(p==='psd'?' af-psd':'')+'"><span class="af-nome">'+nomeP(p,anoFreg)+'</span><span class="af-pista"><span class="af-ench cor-'+p+'" data-w="'+(r[1]/60*100)+'"></span></span><span class="af-val">'+fmt(r[1],1)+'%</span></div>';}).join('');
+    requestAnimationFrame(function(){requestAnimationFrame(function(){caixa.querySelectorAll('.af-ench').forEach(function(e){e.style.width=e.dataset.w+'%';});});});
+    var v=lista.reduce(function(a,b){return b[1]>a[1]?b:a;});
+    var nt=document.getElementById('d-nota'); nt.textContent='Junta em '+anoFreg+': '+nomeP(v[0],anoFreg); nt.className='nota-freg cor-'+v[0]; nt.hidden=false;
+  }
   function escolher(f){
+    fregAtual=f;
     fregs.forEach(function(x){x.setAttribute('aria-pressed',x===f);});
     dNome.textContent=f.dataset.nome;
     document.querySelectorAll('.fotos-freg img').forEach(function(im){
@@ -805,24 +925,16 @@ a{color:inherit}
       im.classList.toggle('ativa',on);
       if(on) document.getElementById('d-legenda').textContent=im.dataset.legenda;
     });
-    var NOMES={mvc:'MVC',ch:'Chega',psd:'PSD/IL',ps:'PS',cdu:'CDU'};
-    var af=JSON.parse(f.dataset.af||'{}'), caixa=document.getElementById('d-af');
-    var ordem=Object.keys(af).sort(function(a,b){return af[b]-af[a];});
-    caixa.innerHTML=ordem.map(function(p){return '<div class="af-linha'+(p==='psd'?' af-psd':'')+'"><span class="af-nome">'+NOMES[p]+'</span><span class="af-pista"><span class="af-ench cor-'+p+'" data-w="'+(af[p]/40*100)+'"></span></span><span class="af-val">'+String(af[p].toFixed(1)).replace('.',',')+'%</span></div>';}).join('');
-    requestAnimationFrame(function(){requestAnimationFrame(function(){caixa.querySelectorAll('.af-ench').forEach(function(e){e.style.width=e.dataset.w+'%';});});});
-    var nt=document.getElementById('d-nota'); nt.className='nota-freg cor-'+f.dataset.venc;
+    var alvo=+f.dataset.pop, de=+(dPop.dataset.v||0); dPop.dataset.v=alvo;
+    animar(700,function(e){dPop.textContent=milhar(de+(alvo-de)*e);});
+    barrasFreg();
     if(window.fregIniciado && innerWidth<896){ var dc=document.querySelector('.detalhe'), rb=dc.getBoundingClientRect(); if(rb.top>innerHeight*.6||rb.bottom<0) dc.scrollIntoView({behavior:calmo?'auto':'smooth',block:'start'}); }
     window.fregIniciado=true;
-    var dn=document.getElementById('d-nota'); dn.textContent=f.dataset.nota||''; dn.hidden=!f.dataset.nota;
-    var alvo=+f.dataset.pop, de=+(dPop.dataset.v||0);
-    dPop.dataset.v=alvo;
-    animar(700,function(e){dPop.textContent=milhar(de+(alvo-de)*e);});
   }
   fregs.forEach(function(f){f.addEventListener('click',function(){escolher(f);});});
-  quandoVisivel(document.querySelector('.lista-freg'),function(){
-    fregs.forEach(function(f,i){setTimeout(function(){f.querySelector('.enchimento').style.width=Math.max(4,(+f.dataset.pop/maxPop*100))+'%';},calmo?0:i*120);});
-  });
+  document.querySelectorAll('.af-ano').forEach(function(b){b.addEventListener('click',function(){anoFreg=b.dataset.ano; barrasFreg();});});
   dPop.dataset.v=0; escolher(fregs[0]);
+  quandoVisivel(document.querySelector('.heatmap'),function(){document.querySelector('.heatmap').classList.add('aceso');});
 
   /* compromissos a marcar um a um */
   var comps=document.querySelectorAll('#compromissos li');
