@@ -1,14 +1,9 @@
+@font-face{font-family:"Archivo";src:url("fonts/archivo-latin-wdth-normal.woff2") format("woff2-variations"),url("fonts/archivo-latin-wdth-normal.woff2") format("woff2");font-weight:100 900;font-stretch:62% 125%;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Archivo";src:url("fonts/archivo-latin-ext-wdth-normal.woff2") format("woff2-variations"),url("fonts/archivo-latin-ext-wdth-normal.woff2") format("woff2");font-weight:100 900;font-stretch:62% 125%;font-style:normal;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 /* Acreditar no Montijo! · folha de estilos
    Cores e regras vêm da maqueta de Agosto 2026:
    laranja só em acções e na faixa, vermelho só em prazos. */
 
-@font-face { font-family: "Barlow Condensed"; font-weight: 700; font-style: normal; font-display: swap; src: url("fonts/barlow-condensed-latin-700-normal.woff2") format("woff2"); }
-@font-face { font-family: "Barlow Condensed"; font-weight: 800; font-style: normal; font-display: swap; src: url("fonts/barlow-condensed-latin-800-normal.woff2") format("woff2"); }
-@font-face { font-family: "Barlow"; font-weight: 500; font-style: normal; font-display: swap; src: url("fonts/barlow-latin-500-normal.woff2") format("woff2"); }
-@font-face { font-family: "Barlow"; font-weight: 600; font-style: normal; font-display: swap; src: url("fonts/barlow-latin-600-normal.woff2") format("woff2"); }
-@font-face { font-family: "Source Serif 4"; font-weight: 400; font-style: normal; font-display: swap; src: url("fonts/source-serif-4-latin-400-normal.woff2") format("woff2"); }
-@font-face { font-family: "Source Serif 4"; font-weight: 400; font-style: italic; font-display: swap; src: url("fonts/source-serif-4-latin-400-italic.woff2") format("woff2"); }
-@font-face { font-family: "Source Serif 4"; font-weight: 600; font-style: normal; font-display: swap; src: url("fonts/source-serif-4-latin-600-normal.woff2") format("woff2"); }
 
 :root {
   --azul: #17457F;
@@ -22,9 +17,9 @@
   --suave: #4E5A6E;
   --branco: #FFFFFF;
 
-  --display: "Barlow Condensed", "Arial Narrow", sans-serif;
-  --ui: "Barlow", "Helvetica Neue", Arial, sans-serif;
-  --corpo: "Source Serif 4", Georgia, serif;
+  --display: "Archivo", "Arial Narrow", sans-serif;
+  --ui: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --corpo: "Archivo", "Helvetica Neue", Arial, sans-serif;
 
   --largura: 72rem;
   --medida: 38rem;
@@ -465,3 +460,8 @@ body { background-color: var(--nevoa); background-image: repeating-linear-gradie
   .menu a { font-size: .86rem; padding: .38rem .7rem; border-bottom: 0; border-radius: .4rem; background: rgba(255,255,255,.06); }
   .menu a[aria-current="page"] { background: var(--laranja); color: var(--noite); }
 }
+
+/* tipografia Archivo (novembro de 2026) */
+h1, h2, h3, .marca, .localidades, .peca figcaption, .citacao p { font-stretch: 62%; font-weight: 800; }
+body { font-stretch: 100%; }
+.btn, .botao { border-radius: 0; }
