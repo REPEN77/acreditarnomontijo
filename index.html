@@ -264,7 +264,7 @@ h2{color:var(--noite)}
 .freg-tit h2{text-indent:3vw}
 @media (max-width:40rem){.freg-tit h2{text-indent:0}}
 .freg-grelha{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(2rem,4vw,3.5rem);margin-top:clamp(3rem,6vw,5rem);align-items:start}
-@media (max-width:62rem){.freg-grelha{grid-template-columns:1fr}}
+@media (max-width:62rem){.freg-grelha{grid-template-columns:minmax(0,1fr)}}
 .tabela{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
 .tabela caption{caption-side:top;text-align:left;font-weight:600;padding-bottom:1rem;color:var(--tejo)}
 .tabela th,.tabela td{padding:.75rem .5rem;text-align:center;border-bottom:1px solid #C9D3DF;vertical-align:middle}
@@ -288,6 +288,8 @@ h2{color:var(--noite)}
   .tabela .col-ant{display:none}
   .freg{font-size:1.35rem}
 }
+@media (max-width:24rem){.tabela th,.tabela td{padding:.55rem .1rem}.freg{font-size:1.1rem}.tabela .w{font-size:.75rem}}
+@media (max-width:21rem){.freg{font-size:.98rem}.tabela .v{font-size:.95rem}}
 .detalhe{position:relative;color:#fff;background:var(--noite);min-height:36rem;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(1.3rem,3vw,2rem);overflow:hidden;isolation:isolate}
 .fotos-freg{position:absolute;inset:0;z-index:-1}
 .fotos-freg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease}
@@ -394,6 +396,7 @@ h2{color:var(--noite)}
   .mes-dias .tem::after,.mes-dias .varios::before{bottom:.25rem;right:.25rem;width:.32rem;height:.32rem}
   .mes-dias .varios::before{right:.7rem}
 }
+@media (max-width:24rem){.mes{padding:1.1rem}.mes-cab{gap:.5rem}.mes-nav button{width:2.6rem;height:2.6rem}.ev{grid-template-columns:3.6rem minmax(0,1fr)}}
 
 /* apelo final: o Tejo, texto na metade direita */
 .apelo{position:relative;min-height:90svh;display:flex;align-items:flex-end;color:#fff;background:var(--noite);overflow:hidden;isolation:isolate}
