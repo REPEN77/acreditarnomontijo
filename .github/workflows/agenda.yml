@@ -1,0 +1,39 @@
+name: Agenda
+
+# Lê o Google Calendar (endereço iCal privado guardado no segredo ICAL_URL)
+# e actualiza agenda/eventos.json com os eventos que podem ser públicos.
+on:
+  schedule:
+    - cron: "23 5,11,17,23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: agenda
+  cancel-in-progress: false
+
+jobs:
+  agenda:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Ler o calendário
+        env:
+          ICAL_URL: ${{ secrets.ICAL_URL }}
+        run: python agenda/actualizar.py
+      - name: Publicar se mudou
+        run: |
+          git config user.name "agenda-acreditar"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add agenda/eventos.json
+          if git diff --cached --quiet; then
+            echo "Agenda sem alterações."
+          else
+            git commit -m "Agenda actualizada a partir do Google Calendar"
+            git push
+          fi
