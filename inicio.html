@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
-<script>(function(){var f="e1fb3b55f68e07967d1a540f",ok=false;try{ok=localStorage.getItem("acreditar-acesso")===f||sessionStorage.getItem("acreditar-acesso")===f;}catch(e){}if(!ok){location.replace("index.html");}})();</script>
+<script>(function(){var f="e1fb3b55f68e07967d1a540f",ok=false;try{ok=localStorage.getItem("acreditar-acesso")===f||sessionStorage.getItem("acreditar-acesso")===f;}catch(e){}if(!ok){location.replace("index.html"+location.hash);}})();</script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Acreditar no Montijo!</title>
@@ -1006,7 +1006,7 @@ body{font-stretch:100%}
   arrancar(AG);
   if(!calmo){ bolha.classList.add('chega'); }
   if(location.hash==='#agenda') abrir(true);
-  else if(grande.matches && ler('agp-fechado')!=='1') setTimeout(function(){ if(!aberto&&scrollY<innerHeight*.5) abrir(false); },1600);
+  else if(!document.getElementById('obras') && grande.matches && ler('agp-fechado')!=='1') setTimeout(function(){ if(!aberto&&scrollY<innerHeight*.5) abrir(false); },1600);
   if(window.fetch){ fetch('agenda/eventos.json?h='+Math.floor(Date.now()/36e5),{cache:'no-cache'}).then(function(r){return r.ok?r.json():null;}).then(function(d){ if(d&&d.eventos&&d.actualizado>AG.actualizado) arrancar(d); }).catch(function(){}); }
 })();
 </script>
