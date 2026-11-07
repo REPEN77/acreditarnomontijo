@@ -3,20 +3,6 @@
  "fonte": "Google Calendar",
  "eventos": [
   {
-   "id": "dd283e3ff8",
-   "titulo": "Legado de Peixinho, Concerto GMCL",
-   "categoria": "Música",
-   "inicio": "2026-11-06T21:30",
-   "fim": "2026-11-06T23:00",
-   "dia_inteiro": false,
-   "t0": 1794000600,
-   "t1": 1794006000,
-   "local": "Casa da Música Jorge Peixinho, Montijo",
-   "morada": "Casa da Música Jorge Peixinho, Montijo",
-   "url": "https://www.mun-montijo.pt/conhecer/o-que-fazer/eventos/evento-1/o-legado-de-peixinho-alis-e-outras-linhas-do-tempo-musica",
-   "destaque": false
-  },
-  {
    "id": "e73c50154e",
    "titulo": "20 Anos Universidade Sénior",
    "categoria": "Comunidade",
