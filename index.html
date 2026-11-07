@@ -2,7 +2,7 @@
 <html lang="pt-PT">
 <head>
 <meta charset="utf-8">
-<script>(function(){var f="e1fb3b55f68e07967d1a540f";try{if(localStorage.getItem("acreditar-acesso")===f||sessionStorage.getItem("acreditar-acesso")===f){location.replace("inicio.html"+location.hash);}}catch(e){}})();</script>
+<script>(function(){var f="e1fb3b55f68e07967d1a540f";try{if(/[?&]sair\b/.test(location.search)){localStorage.removeItem("acreditar-acesso");sessionStorage.removeItem("acreditar-acesso");history.replaceState(null,"",location.pathname+location.hash);return;}if(localStorage.getItem("acreditar-acesso")===f||sessionStorage.getItem("acreditar-acesso")===f){location.replace("inicio.html"+location.hash);}}catch(e){}})();</script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Acreditar no Montijo! | Site em construção</title>

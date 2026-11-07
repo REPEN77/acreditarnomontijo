@@ -1010,5 +1010,7 @@ body{font-stretch:100%}
   if(window.fetch){ fetch('agenda/eventos.json?h='+Math.floor(Date.now()/36e5),{cache:'no-cache'}).then(function(r){return r.ok?r.json():null;}).then(function(d){ if(d&&d.eventos&&d.actualizado>AG.actualizado) arrancar(d); }).catch(function(){}); }
 })();
 </script>
+<a class="sessao" href="index.html?sair"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 7l-5 5 5 5"/><path d="M9 12h12"/><path d="M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5"/></svg>Terminar sessão</a>
+<style>.sessao{position:fixed;left:1rem;bottom:1rem;z-index:55;display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .95rem;border-radius:2rem;background:rgba(10,35,64,.92);color:#fff;text-decoration:none;font:600 .88rem var(--ui);box-shadow:0 12px 26px -14px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.12)}.sessao:hover{background:var(--ambar);color:var(--noite)}.sessao svg{width:1rem;height:1rem}</style>
 </body>
 </html>
