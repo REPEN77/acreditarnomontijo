@@ -48,13 +48,10 @@ h1,h2,h3{font-stretch:62%;font-weight:800;text-transform:uppercase;line-height:.
 
 /* botões e etiquetas */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:2.9rem;padding:.7rem 1.25rem;border-radius:.65rem;border:0;font:700 1rem var(--f);text-decoration:none;cursor:pointer;transition:transform .25s var(--ease),filter .2s,background .2s,color .2s}
-.btn:hover{transform:translateY(-2px)}
 .btn-ambar{background:var(--ambar);color:var(--noite)}
-.btn-ambar:hover{filter:brightness(1.06)}
 .btn-noite{background:var(--noite);color:#fff}
 .btn-noite:hover{background:var(--tejo)}
 .btn-linha{color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.75)}
-.btn-linha:hover{background:rgba(255,255,255,.12)}
 .lig{display:inline-flex;align-items:center;gap:.4rem;font:600 .95rem var(--f);color:var(--tejo);text-decoration:none}
 .lig:hover{text-decoration:underline}
 .lig svg{width:1rem;height:1rem}
@@ -357,6 +354,64 @@ main{padding-bottom:clamp(2.5rem,6vw,4.5rem)}
 .muda b{display:block;font:800 clamp(1.35rem,2.2vw,1.7rem)/1 var(--f);font-stretch:62%;text-transform:uppercase;margin-bottom:.5rem}
 .muda span{font-size:1rem;line-height:1.5;color:rgba(255,255,255,.88)}
 
+/* ===== camada dinâmica ===== */
+/* fundo da página: manchas suaves que derivam */
+body::before{content:"";position:fixed;inset:-15%;z-index:-1;pointer-events:none;background:radial-gradient(38vmax 38vmax at 12% 18%,rgba(143,169,204,.42),transparent 62%),radial-gradient(34vmax 34vmax at 88% 70%,rgba(23,69,127,.14),transparent 62%),radial-gradient(26vmax 26vmax at 62% 8%,rgba(211,154,90,.12),transparent 60%)}
+@keyframes deriva{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(3%,-2%,0) scale(1.06)}100%{transform:translate3d(-3%,3%,0) scale(1)}}
+
+/* fundos vivos nas secções escuras: luz que segue o rato e grão */
+.vivo-host{position:relative;isolation:isolate;overflow:hidden}
+.vivo{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden;border-radius:inherit}
+.vivo i{position:absolute;border-radius:50%;will-change:transform}
+.vivo i:nth-child(1){left:-22vmax;top:-28vmax;width:64vmax;height:64vmax;background:radial-gradient(closest-side,rgba(23,69,127,.95),rgba(23,69,127,0))}
+.vivo i:nth-child(2){right:-26vmax;bottom:-32vmax;width:62vmax;height:62vmax;background:radial-gradient(closest-side,rgba(143,169,204,.32),rgba(143,169,204,0))}
+.vivo i:nth-child(3){left:42%;top:28%;width:40vmax;height:40vmax;background:radial-gradient(closest-side,rgba(211,154,90,.17),rgba(211,154,90,0))}
+.vivo::before{content:"";position:absolute;inset:0;opacity:.09;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.vivo::after{content:"";position:absolute;inset:0;background:radial-gradient(30rem circle at var(--mx,50%) var(--my,50%),rgba(143,169,204,.2),transparent 45%);opacity:var(--luz,0);transition:opacity .45s ease}
+@keyframes bolha1{to{transform:translate3d(16vmax,10vmax,0) scale(1.15)}}
+@keyframes bolha2{to{transform:translate3d(-14vmax,-12vmax,0) scale(1.1)}}
+@keyframes bolha3{to{transform:translate3d(-18vmax,8vmax,0) scale(1.25)}}
+
+/* botões: brilho que atravessa, brilho âmbar, íman e ondulação */
+.btn{position:relative;overflow:hidden;isolation:isolate;transform:translate3d(var(--bx,0px),var(--by,0px),0);transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .3s,color .3s}
+.btn:hover{transform:translate3d(var(--bx,0px),calc(var(--by,0px) - 2px),0)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-130%);transition:transform .85s var(--ease)}
+.btn:hover::before{transform:translateX(130%)}
+.btn-ambar:hover{box-shadow:0 14px 30px -14px rgba(211,154,90,.95),0 0 0 4px rgba(211,154,90,.2)}
+.btn-noite:hover{box-shadow:0 14px 30px -14px rgba(13,43,78,.8)}
+.btn-linha::before{background:#fff;transform:scaleX(0);transform-origin:left center;transition:transform .45s var(--ease)}
+.btn-linha:hover::before{transform:scaleX(1)}
+.btn-linha:hover{color:var(--noite)}
+.onda{position:absolute;z-index:-1;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:rgba(255,255,255,.55);pointer-events:none;animation:onda .65s ease-out forwards}
+@keyframes onda{to{transform:scale(30);opacity:0}}
+
+/* menu: indicador que desliza */
+.topo-nav{position:relative}
+.topo-nav a{position:relative;z-index:1}
+.nav-ind{position:absolute;left:0;top:50%;height:2.35rem;border-radius:.55rem;background:rgba(255,255,255,.13);pointer-events:none;opacity:0;transform:translate(var(--nx,0px),-50%);transition:transform .4s var(--ease),width .4s var(--ease),opacity .25s}
+.com-ind a:hover,.com-ind a.ativo{background:transparent}
+
+/* cartões com inclinação 3D e luz */
+.eixo,.muda li{position:relative}
+.tilt,.tilt:hover{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .6s var(--ease),background .25s}
+.tilt.mexe{transition:transform .1s linear,background .25s}
+.brilho{position:absolute;inset:0;z-index:2;border-radius:inherit;pointer-events:none;background:radial-gradient(16rem circle at var(--sx,50%) var(--sy,50%),rgba(255,255,255,.2),transparent 50%);opacity:0;transition:opacity .3s}
+.tilt:hover .brilho{opacity:1}
+
+/* riscas do destaque seguem o rato */
+.hero .faixas{transform:translate3d(var(--fx,0px),var(--fy,0px),0);transition:transform .9s var(--ease)}
+
+/* entradas ao fazer scroll */
+.mov .surge{opacity:0;transform:translateY(26px);filter:blur(8px);transition:opacity .9s var(--ease),transform 1s var(--ease),filter .9s var(--ease);transition-delay:calc(var(--i,0)*70ms)}
+.mov .surge.vis{opacity:1;transform:none;filter:none}
+
+@media (prefers-reduced-motion:no-preference){
+  body::before{animation:deriva 28s ease-in-out infinite alternate}
+  .vivo i:nth-child(1){animation:bolha1 20s ease-in-out infinite alternate}
+  .vivo i:nth-child(2){animation:bolha2 24s ease-in-out infinite alternate}
+  .vivo i:nth-child(3){animation:bolha3 28s ease-in-out infinite alternate}
+}
+
 /* um só momento orquestrado: a entrada do destaque */
 .mov .hero-sup,.mov .hero-p,.mov .hero .acoes,.mov .hero-ctl{opacity:0;transform:translateY(1rem);transition:opacity .8s var(--ease),transform .9s var(--ease)}
 .mov .hero h1 .ln>span{transform:translateY(110%);transition:transform 1.1s var(--ease)}
@@ -463,7 +518,7 @@ main{padding-bottom:clamp(2.5rem,6vw,4.5rem)}
   <div class="mudar-in">
     <h2 id="mud-t">De 2021 para 2025, o PSD recuou no Montijo</h2>
     <p class="mudar-lead">O pior resultado na Câmara das últimas quatro autárquicas, e com mais gente a votar. Mais do mesmo não chega.</p>
-    <dl class="mlista"><div class="ml ml-cab" aria-hidden="true"><dt></dt><dd><span class="ml-a">2021</span><span class="ml-b">2025</span></dd></div><div class="ml" style="--i:0"><dt>Votação na Câmara</dt><dd><span class="ml-a"><span class="vh">Em 2021: </span><s>27,74%</s></span><span class="ml-b"><span class="vh">Em 2025: </span>16,68%</span></dd></div><div class="ml" style="--i:1"><dt>Votos na Câmara</dt><dd><span class="ml-a"><span class="vh">Em 2021: </span><s>5.547</s></span><span class="ml-b"><span class="vh">Em 2025: </span>3.917</span></dd></div><div class="ml" style="--i:2"><dt>Vereadores</dt><dd><span class="ml-a"><span class="vh">Em 2021: </span><s>2</s></span><span class="ml-b"><span class="vh">Em 2025: </span>1</span></dd></div><div class="ml" style="--i:3"><dt>Deputados municipais</dt><dd><span class="ml-a"><span class="vh">Em 2021: </span><s>7</s></span><span class="ml-b"><span class="vh">Em 2025: </span>4</span></dd></div><div class="ml" style="--i:4"><dt>Mandatos nas freguesias</dt><dd><span class="ml-a"><span class="vh">Em 2021: </span><s>15</s></span><span class="ml-b"><span class="vh">Em 2025: </span>11</span></dd></div></dl>
+    <dl class="mlista"><div class="ml ml-cab" aria-hidden="true"><dt></dt><dd><span class="ml-a">2021</span><span class="ml-b">2025</span></dd></div><div class="ml" style="--i:0"><dt>Votação na Câmara</dt><dd><span class="ml-a"><span class="vh">Em 2021: </span><s>27,74%</s></span><span class="ml-b"><span class="vh">Em 2025: </span><span class="v" data-de="27,74%">16,68%</span></span></dd></div><div class="ml" style="--i:1"><dt>Votos na Câmara</dt><dd><span class="ml-a"><span class="vh">Em 2021: </span><s>5.547</s></span><span class="ml-b"><span class="vh">Em 2025: </span><span class="v" data-de="5.547">3.917</span></span></dd></div><div class="ml" style="--i:2"><dt>Vereadores</dt><dd><span class="ml-a"><span class="vh">Em 2021: </span><s>2</s></span><span class="ml-b"><span class="vh">Em 2025: </span><span class="v" data-de="2">1</span></span></dd></div><div class="ml" style="--i:3"><dt>Deputados municipais</dt><dd><span class="ml-a"><span class="vh">Em 2021: </span><s>7</s></span><span class="ml-b"><span class="vh">Em 2025: </span><span class="v" data-de="7">4</span></span></dd></div><div class="ml" style="--i:4"><dt>Mandatos nas freguesias</dt><dd><span class="ml-a"><span class="vh">Em 2021: </span><s>15</s></span><span class="ml-b"><span class="vh">Em 2025: </span><span class="v" data-de="15">11</span></span></dd></div></dl>
     <p class="mudar-nota">A exceção é Canha, que passou a ter presidente de junta do PSD. É a única freguesia do concelho onde isso acontece.</p>
     <p class="mudar-fonte">Fontes: resultados oficiais, via Wikipédia (2021) e RTP (2025, após a recontagem).</p>
     <h3 class="muda-t">O que muda connosco</h3>
@@ -571,7 +626,7 @@ main{padding-bottom:clamp(2.5rem,6vw,4.5rem)}
 </footer>
 
 <script>
-var DADOS={"org":{"cm":{"nome":"Câmara Municipal","eleitos":["vereador","vereadores"],"anos":{"2013":{"psd":25.22,"lug":2,"venc":"ps","vencNome":"PS","vencPct":28.59},"2017":{"psd":19.44,"lug":1,"venc":"ps","vencNome":"PS","vencPct":45.42},"2021":{"psd":27.74,"lug":2,"venc":"ps","vencNome":"PS","vencPct":29.49},"2025":{"psd":16.68,"lug":1,"venc":"mvc","vencNome":"MVC","vencPct":27.43}}},"am":{"nome":"Assembleia Municipal","eleitos":["deputado","deputados"],"anos":{"2013":{"psd":23.19,"lug":6,"venc":"ps","vencNome":"PS","vencPct":28.77},"2017":{"psd":19.94,"lug":5,"venc":"ps","vencNome":"PS","vencPct":43.21},"2021":{"psd":26.52,"lug":7,"venc":"ps","vencNome":"PS","vencPct":29.29},"2025":{"psd":17.13,"lug":4,"venc":"ch","vencNome":"Chega","vencPct":25.75}}},"af":{"nome":"Juntas de freguesia","eleitos":["mandato","mandatos"],"anos":{"2013":{"psd":22.96,"lug":14,"venc":"ps","vencNome":"PS","vencPct":30.88},"2017":{"psd":19.97,"lug":12,"venc":"ps","vencNome":"PS","vencPct":47.09},"2021":{"psd":25.95,"lug":15,"venc":"ps","vencNome":"PS","vencPct":34.54},"2025":{"psd":17.13,"lug":11,"venc":"mvc","vencNome":"MVC","vencPct":26.62}}}},"freg":{"Montijo e Afonsoeiro":{"pop":41404,"anos":{"2013":{"psd":23.28,"venc":"ps","vencNome":"PS"},"2017":{"psd":18.47,"venc":"ps","vencNome":"PS"},"2021":{"psd":25.64,"venc":"ps","vencNome":"PS"},"2025":{"psd":17.12,"venc":"mvc","vencNome":"MVC"}}},"Atalaia e Alto Estanqueiro-Jardia":{"pop":5379,"anos":{"2013":{"psd":16.57,"venc":"ps","vencNome":"PS"},"2017":{"psd":16.33,"venc":"ps","vencNome":"PS"},"2021":{"psd":21.95,"venc":"ps","vencNome":"PS"},"2025":{"psd":20.79,"venc":"ch","vencNome":"Chega"}}},"Pegões":{"pop":4090,"anos":{"2013":{"psd":23.83,"venc":"ps","vencNome":"PS"},"2017":{"psd":40.07,"venc":"ps","vencNome":"PS"},"2021":{"psd":39.61,"venc":"ps","vencNome":"PS"},"2025":{"psd":8.71,"venc":"mvc","vencNome":"MVC"}}},"Sarilhos Grandes":{"pop":3243,"anos":{"2013":{"psd":19.85,"venc":"cdu","vencNome":"CDU"},"2017":{"psd":14.48,"venc":"ps","vencNome":"PS"},"2021":{"psd":16.95,"venc":"cdu","vencNome":"CDU"},"2025":{"psd":12.53,"venc":"mvc","vencNome":"MVC"}}},"Canha":{"pop":1566,"anos":{"2013":{"psd":36.94,"venc":"psd","vencNome":"PSD"},"2017":{"psd":21.65,"venc":"ps","vencNome":"PS"},"2021":{"psd":30.02,"venc":"ps","vencNome":"PS"},"2025":{"psd":35.22,"venc":"psd","vencNome":"PSD"}}}},"agenda":{"actualizado":"2026-11-04T02:10:00Z","fonte":"Google Calendar","eventos":[{"id":"b350dc119f","titulo":"Gravel Montijo","categoria":"Desporto","inicio":"2026-11-21","fim":"2026-11-23","dia_inteiro":true,"t0":1795219200,"t1":1795392000,"local":"Montijo (a confirmar)","morada":"Montijo (a confirmar)","url":"https://www.mun-montijo.pt/conhecer/o-que-fazer/eventos/evento-1/gravel-montijo-ciclismo","destaque":false},{"id":"0684c2c66e","titulo":"Inauguração Mercado de Natal","categoria":"Natal","inicio":"2026-11-27T18:00","fim":"2026-11-27T19:30","dia_inteiro":false,"t0":1795802400,"t1":1795807800,"local":"Praça da República e Rua Guerra Junqueiro, Montijo","morada":"Praça da República e Rua Guerra Junqueiro, Montijo","url":"https://www.mun-montijo.pt/viver/noticia/mercado-de-natal-2026-com-inscricoes-abertas","destaque":false},{"id":"c1b751b7db","titulo":"Mercado Criativo Artesanato","categoria":"Feira e mercado","inicio":"2026-11-28T09:00","fim":"2026-11-28T13:00","dia_inteiro":false,"t0":1795856400,"t1":1795870800,"local":"Mercado Municipal do Montijo, Montijo","morada":"Mercado Municipal do Montijo, Montijo","url":"https://www.mun-montijo.pt/conhecer/o-que-fazer/eventos/evento-1/mercado-criativo-artesanato-criatividade","destaque":false},{"id":"055449ef2a","titulo":"Prémios Concurso Poesia Montijo Jovem","categoria":"Cultura","inicio":"2026-11-28T15:00","fim":"2026-11-28T16:30","dia_inteiro":false,"t0":1795878000,"t1":1795883400,"local":"Galeria Municipal do Montijo (a confirmar)","morada":"Galeria Municipal do Montijo (a confirmar)","url":"https://www.mun-montijo.pt/conhecer/o-que-fazer/eventos/evento-1/lancamento-das-obras-vencedoras-e-entrega-de-premios-do-xi-concurso-de-poesia-e-ficcao-narrativa-montijo-jovem","destaque":false},{"id":"346502e848","titulo":"Tertuleria com Reinhard Naumann","categoria":"Debate e cidadania","inicio":"2026-11-29T16:00","fim":"2026-11-29T17:30","dia_inteiro":false,"t0":1795968000,"t1":1795973400,"local":"Ateneu Popular de Montijo, Rua Luís Calado Nunes","morada":"Ateneu Popular de Montijo, Rua Luís Calado Nunes, loja H, Montijo","url":"https://www.mun-montijo.pt/conhecer/o-que-fazer/eventos/evento-1/tertuleria-com-reinhard-naumann","destaque":false},{"id":"1aac141a23","titulo":"Decathlon São Silvestre Montijo","categoria":"Desporto","inicio":"2026-12-19T16:30","fim":"2026-12-19T19:00","dia_inteiro":false,"t0":1797697800,"t1":1797706800,"local":"Praça da República, Montijo","morada":"Praça da República, Montijo","url":"https://www.mun-montijo.pt/conhecer/o-que-fazer/eventos/evento-1/decathlon-sao-silvestre-montijo-corrida-e-caminhada","destaque":false},{"id":"b19d343dd2","titulo":"Concerto de Ano Novo, Metropolitana","categoria":"Música","inicio":"2027-01-08T21:00","fim":"2027-01-08T22:30","dia_inteiro":false,"t0":1799442000,"t1":1799447400,"local":"Cinema-Teatro Joaquim d'Almeida, Rua Joaquim d'Almeida","morada":"Cinema-Teatro Joaquim d'Almeida, Rua Joaquim d'Almeida, Montijo","url":"https://www.metropolitana.pt/programacao/concerto-de-ano-novo-2027/","destaque":false}]},"anos":["2013","2017","2021","2025"]};
+var DADOS={"org":{"cm":{"nome":"Câmara Municipal","eleitos":["vereador","vereadores"],"anos":{"2013":{"psd":25.22,"lug":2,"venc":"ps","vencNome":"PS","vencPct":28.59},"2017":{"psd":19.44,"lug":1,"venc":"ps","vencNome":"PS","vencPct":45.42},"2021":{"psd":27.74,"lug":2,"venc":"ps","vencNome":"PS","vencPct":29.49},"2025":{"psd":16.68,"lug":1,"venc":"mvc","vencNome":"MVC","vencPct":27.43}}},"am":{"nome":"Assembleia Municipal","eleitos":["deputado","deputados"],"anos":{"2013":{"psd":23.19,"lug":6,"venc":"ps","vencNome":"PS","vencPct":28.77},"2017":{"psd":19.94,"lug":5,"venc":"ps","vencNome":"PS","vencPct":43.21},"2021":{"psd":26.52,"lug":7,"venc":"ps","vencNome":"PS","vencPct":29.29},"2025":{"psd":17.13,"lug":4,"venc":"ch","vencNome":"Chega","vencPct":25.75}}},"af":{"nome":"Juntas de freguesia","eleitos":["mandato","mandatos"],"anos":{"2013":{"psd":22.96,"lug":14,"venc":"ps","vencNome":"PS","vencPct":30.88},"2017":{"psd":19.97,"lug":12,"venc":"ps","vencNome":"PS","vencPct":47.09},"2021":{"psd":25.95,"lug":15,"venc":"ps","vencNome":"PS","vencPct":34.54},"2025":{"psd":17.13,"lug":11,"venc":"mvc","vencNome":"MVC","vencPct":26.62}}}},"freg":{"Montijo e Afonsoeiro":{"pop":41404,"anos":{"2013":{"psd":23.28,"venc":"ps","vencNome":"PS"},"2017":{"psd":18.47,"venc":"ps","vencNome":"PS"},"2021":{"psd":25.64,"venc":"ps","vencNome":"PS"},"2025":{"psd":17.12,"venc":"mvc","vencNome":"MVC"}}},"Atalaia e Alto Estanqueiro-Jardia":{"pop":5379,"anos":{"2013":{"psd":16.57,"venc":"ps","vencNome":"PS"},"2017":{"psd":16.33,"venc":"ps","vencNome":"PS"},"2021":{"psd":21.95,"venc":"ps","vencNome":"PS"},"2025":{"psd":20.79,"venc":"ch","vencNome":"Chega"}}},"Pegões":{"pop":4090,"anos":{"2013":{"psd":23.83,"venc":"ps","vencNome":"PS"},"2017":{"psd":40.07,"venc":"ps","vencNome":"PS"},"2021":{"psd":39.61,"venc":"ps","vencNome":"PS"},"2025":{"psd":8.71,"venc":"mvc","vencNome":"MVC"}}},"Sarilhos Grandes":{"pop":3243,"anos":{"2013":{"psd":19.85,"venc":"cdu","vencNome":"CDU"},"2017":{"psd":14.48,"venc":"ps","vencNome":"PS"},"2021":{"psd":16.95,"venc":"cdu","vencNome":"CDU"},"2025":{"psd":12.53,"venc":"mvc","vencNome":"MVC"}}},"Canha":{"pop":1566,"anos":{"2013":{"psd":36.94,"venc":"psd","vencNome":"PSD"},"2017":{"psd":21.65,"venc":"ps","vencNome":"PS"},"2021":{"psd":30.02,"venc":"ps","vencNome":"PS"},"2025":{"psd":35.22,"venc":"psd","vencNome":"PSD"}}}},"agenda":{"actualizado":"2026-11-04T02:10:00Z","fonte":"Google Calendar","eventos":[{"id":"0684c2c66e","titulo":"Inauguração Mercado de Natal","categoria":"Natal","inicio":"2026-11-27T18:00","fim":"2026-11-27T19:30","dia_inteiro":false,"t0":1795802400,"t1":1795807800,"local":"Praça da República e Rua Guerra Junqueiro, Montijo","morada":"Praça da República e Rua Guerra Junqueiro, Montijo","url":"https://www.mun-montijo.pt/viver/noticia/mercado-de-natal-2026-com-inscricoes-abertas","destaque":false},{"id":"c1b751b7db","titulo":"Mercado Criativo Artesanato","categoria":"Feira e mercado","inicio":"2026-11-28T09:00","fim":"2026-11-28T13:00","dia_inteiro":false,"t0":1795856400,"t1":1795870800,"local":"Mercado Municipal do Montijo, Montijo","morada":"Mercado Municipal do Montijo, Montijo","url":"https://www.mun-montijo.pt/conhecer/o-que-fazer/eventos/evento-1/mercado-criativo-artesanato-criatividade","destaque":false},{"id":"055449ef2a","titulo":"Prémios Concurso Poesia Montijo Jovem","categoria":"Cultura","inicio":"2026-11-28T15:00","fim":"2026-11-28T16:30","dia_inteiro":false,"t0":1795878000,"t1":1795883400,"local":"Galeria Municipal do Montijo (a confirmar)","morada":"Galeria Municipal do Montijo (a confirmar)","url":"https://www.mun-montijo.pt/conhecer/o-que-fazer/eventos/evento-1/lancamento-das-obras-vencedoras-e-entrega-de-premios-do-xi-concurso-de-poesia-e-ficcao-narrativa-montijo-jovem","destaque":false},{"id":"346502e848","titulo":"Tertuleria com Reinhard Naumann","categoria":"Debate e cidadania","inicio":"2026-11-29T16:00","fim":"2026-11-29T17:30","dia_inteiro":false,"t0":1795968000,"t1":1795973400,"local":"Ateneu Popular de Montijo, Rua Luís Calado Nunes","morada":"Ateneu Popular de Montijo, Rua Luís Calado Nunes, loja H, Montijo","url":"https://www.mun-montijo.pt/conhecer/o-que-fazer/eventos/evento-1/tertuleria-com-reinhard-naumann","destaque":false},{"id":"1aac141a23","titulo":"Decathlon São Silvestre Montijo","categoria":"Desporto","inicio":"2026-12-19T16:30","fim":"2026-12-19T19:00","dia_inteiro":false,"t0":1797697800,"t1":1797706800,"local":"Praça da República, Montijo","morada":"Praça da República, Montijo","url":"https://www.mun-montijo.pt/conhecer/o-que-fazer/eventos/evento-1/decathlon-sao-silvestre-montijo-corrida-e-caminhada","destaque":false},{"id":"b19d343dd2","titulo":"Concerto de Ano Novo, Metropolitana","categoria":"Música","inicio":"2027-01-08T21:00","fim":"2027-01-08T22:30","dia_inteiro":false,"t0":1799442000,"t1":1799447400,"local":"Cinema-Teatro Joaquim d'Almeida, Rua Joaquim d'Almeida","morada":"Cinema-Teatro Joaquim d'Almeida, Rua Joaquim d'Almeida, Montijo","url":"https://www.metropolitana.pt/programacao/concerto-de-ano-novo-2027/","destaque":false}]},"anos":["2013","2017","2021","2025"]};
 var ICS={"fora": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5\"/></svg>", "cal": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 10h18M8 3v4M16 3v4\"/><path d=\"M9 15.5l2 2 4-4\"/></svg>"};
 
 (function(){
@@ -705,6 +760,66 @@ var ICS={"fora": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor
   bMais.addEventListener('click',function(){nMostrar=999;agenda(true);});
   agenda(false);
   if(window.fetch)fetch('agenda/eventos.json?h='+Math.floor(Date.now()/36e5),{cache:'no-cache'}).then(function(r){return r.ok?r.json():null;}).then(function(d){if(d&&d.eventos&&d.actualizado>AG.actualizado){AG=d;agenda(false);}}).catch(function(){});
+})();
+
+
+(function(){
+  var calmo=matchMedia('(prefers-reduced-motion: reduce)').matches, fino=matchMedia('(hover: hover) and (pointer: fine)').matches;
+  function $$(s,r){return [].slice.call((r||document).querySelectorAll(s));}
+
+  /* fundos vivos nas secções escuras */
+  if(!calmo)$$('.mudar,.meg,.faixa,.rodape,.sede').forEach(function(h){
+    h.classList.add('vivo-host');var v=document.createElement('span');v.className='vivo';v.setAttribute('aria-hidden','true');v.innerHTML='<i></i><i></i><i></i>';h.insertBefore(v,h.firstChild);
+    if(!fino)return;var ev=null,pend=false;
+    h.addEventListener('pointermove',function(e){ev=e;if(pend)return;pend=true;requestAnimationFrame(function(){pend=false;var r=h.getBoundingClientRect();v.style.setProperty('--mx',(ev.clientX-r.left)+'px');v.style.setProperty('--my',(ev.clientY-r.top)+'px');v.style.setProperty('--luz','1');});});
+    h.addEventListener('pointerleave',function(){v.style.setProperty('--luz','0');});
+  });
+
+  /* botões: ondulação ao carregar e íman nos principais */
+  $$('.btn').forEach(function(b){
+    if(!calmo)b.addEventListener('pointerdown',function(e){var r=b.getBoundingClientRect(),o=document.createElement('span');o.className='onda';o.style.left=(e.clientX-r.left)+'px';o.style.top=(e.clientY-r.top)+'px';b.appendChild(o);setTimeout(function(){o.remove();},700);});
+    if(fino&&!calmo&&b.classList.contains('btn-ambar')){
+      b.addEventListener('pointermove',function(e){var r=b.getBoundingClientRect();b.style.setProperty('--bx',((e.clientX-r.left-r.width/2)*.2).toFixed(1)+'px');b.style.setProperty('--by',((e.clientY-r.top-r.height/2)*.3).toFixed(1)+'px');});
+      b.addEventListener('pointerleave',function(){b.style.removeProperty('--bx');b.style.removeProperty('--by');});
+    }
+  });
+
+  /* menu: indicador que desliza até à ligação */
+  var nav=document.querySelector('.topo-nav');
+  if(nav&&fino){var ind=document.createElement('span');ind.className='nav-ind';ind.setAttribute('aria-hidden','true');nav.appendChild(ind);nav.classList.add('com-ind');
+    var mover=function(a){if(!a){ind.style.opacity='0';return;}ind.style.width=a.offsetWidth+'px';ind.style.setProperty('--nx',a.offsetLeft+'px');ind.style.opacity='1';};
+    $$('a',nav).forEach(function(a){a.addEventListener('pointerenter',function(){mover(a);});});
+    nav.addEventListener('pointerleave',function(){mover(nav.querySelector('a.ativo'));});
+    var pedido=false;addEventListener('scroll',function(){if(pedido)return;pedido=true;requestAnimationFrame(function(){pedido=false;if(!nav.matches(':hover'))mover(nav.querySelector('a.ativo'));});},{passive:true});
+  }
+
+  /* cartões com inclinação e luz */
+  if(fino&&!calmo)$$('.eixo,.muda li,.mos-i,.et').forEach(function(c){
+    c.classList.add('tilt');var b=document.createElement('span');b.className='brilho';b.setAttribute('aria-hidden','true');c.appendChild(b);
+    var max=c.classList.contains('mos-i')?3:6;
+    c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.classList.add('mexe');
+      c.style.setProperty('--ry',((x-.5)*max*2).toFixed(2)+'deg');c.style.setProperty('--rx',((.5-y)*max*2).toFixed(2)+'deg');c.style.setProperty('--sx',(x*100).toFixed(1)+'%');c.style.setProperty('--sy',(y*100).toFixed(1)+'%');});
+    c.addEventListener('pointerleave',function(){c.classList.remove('mexe');c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg');});
+  });
+
+  /* riscas do destaque seguem o rato */
+  var hero=document.getElementById('inicio'),fx=hero&&hero.querySelector('.faixas');
+  if(fx&&fino&&!calmo)hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();fx.style.setProperty('--fx',((e.clientX-r.left)/r.width-.5)*-26+'px');fx.style.setProperty('--fy',((e.clientY-r.top)/r.height-.5)*-18+'px');});
+
+  /* entradas ao fazer scroll e números de 2025 a descer a partir de 2021 */
+  if(calmo||!('IntersectionObserver' in window))return;
+  function fmt(mod,v){var m=mod.match(/\d[\d.]*(,\d+)?/);if(!m)return mod;var s=m[0],dec=(s.split(',')[1]||'').length,mil=s.indexOf('.')>-1,x=v.toFixed(dec).replace('.',',');
+    if(mil){var q=x.split(',');q[0]=q[0].replace(/\B(?=(\d{3})+(?!\d))/g,'.');x=q.join(',');}return mod.slice(0,m.index)+x+mod.slice(m.index+s.length);}
+  function val(t){return parseFloat(t.replace(/[^\d,]/g,'').replace(',','.'));}
+  function descer(el,atraso){var fim=el.textContent,a=val(el.dataset.de),b=val(fim),t0=null;el.textContent=fmt(fim,a);
+    setTimeout(function(){requestAnimationFrame(function passo(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/1300),e=1-Math.pow(1-k,3);el.textContent=k<1?fmt(fim,a+(b-a)*e):fim;if(k<1)requestAnimationFrame(passo);});},atraso);}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;io.unobserve(el);
+    if(el.classList.contains('mlista')){$$('.v[data-de]',el).forEach(function(v,k){descer(v,700+k*160);});return;}
+    el.classList.add('vis');setTimeout(function(){el.classList.remove('surge','vis');el.style.removeProperty('--i');},2300);});},{rootMargin:'0px 0px -6% 0px',threshold:.12});
+  var ml=document.querySelector('.mlista');if(ml)io.observe(ml);
+  ['.sec-cab','.meg-cab','.cand-media','.cand-c>*','.alvo-in>*','.muda li','.eixo','.sede-foto','.sede-c','.mos-i','.et','.faixa-t','.faixa-l','.pg-cab','.bp','.legal section'].forEach(function(sel){
+    $$(sel).forEach(function(el){var ir=[].slice.call(el.parentNode.children).filter(function(x){return x.matches(sel);});el.style.setProperty('--i',Math.min(6,ir.indexOf(el)));el.classList.add('surge');io.observe(el);});
+  });
 })();
 
 </script>
