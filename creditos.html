@@ -329,6 +329,21 @@ main{padding-bottom:clamp(2.5rem,6vw,4.5rem)}
 .marca{overflow:hidden;padding:clamp(1.6rem,4vw,3rem) var(--g) .4rem;font:800 clamp(2rem,10vw,12rem)/.82 var(--f);font-stretch:62%;text-transform:uppercase;letter-spacing:-.01em;color:var(--field-ink);white-space:nowrap;text-align:center}
 .marca span{display:inline-block}
 
+/* o que muda: grelha com a sede em destaque */
+.bento{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(11.5rem,auto);gap:var(--g);margin-top:1.4rem}
+.bt{position:relative;display:flex;flex-direction:column;gap:.7rem;padding:clamp(1.2rem,2.4vw,1.6rem);border-radius:var(--r);background:var(--surface)}
+.bt h3{font:800 clamp(1.5rem,2.3vw,2rem)/.95 var(--f);font-stretch:62%;text-transform:uppercase;color:var(--ink)}
+.bt p{line-height:1.55}
+.bt .sigilo{filter:blur(.16em);background:rgba(13,43,78,.08);border-radius:.3em;padding:0 .15em}
+.bt-sede{grid-column:span 2;grid-row:span 2;padding:0;overflow:hidden;background:var(--field);color:var(--field-ink)}
+.bt-sede img{display:block;width:100%;aspect-ratio:16/8;object-fit:cover;object-position:center 45%}
+.bt-sede .bt-c{display:grid;gap:.9rem;padding:clamp(1.2rem,2.6vw,1.9rem)}
+.bt-sede h3{font-size:clamp(2.1rem,3.8vw,3.2rem);color:#fff}
+.bt-sede p{max-width:34rem;color:rgba(255,255,255,.9)}
+.bt-sede .lig{color:var(--field-ink)}
+@media (max-width:60rem){.bento{grid-template-columns:repeat(2,minmax(0,1fr))}.bt-sede{grid-row:auto}}
+@media (max-width:36rem){.bento{grid-template-columns:minmax(0,1fr);grid-auto-rows:auto}.bt-sede{grid-column:auto}}
+
 /* porquê mudar: os números riscados */
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .mudar{--corte:clamp(1.8rem,5vw,4.5rem);margin-inline:calc(50% - 50vw + var(--sbw,0px)/2);background:var(--field);color:var(--field-ink);clip-path:polygon(0 var(--corte),100% 0,100% 100%,0 100%);padding:calc(var(--corte) + clamp(2.4rem,6vw,4.5rem)) 0 clamp(3rem,7vw,5.5rem)}
@@ -567,7 +582,7 @@ body::before{content:"";position:fixed;inset:-15%;z-index:-1;pointer-events:none
   function $$(s,r){return [].slice.call((r||document).querySelectorAll(s));}
 
   /* fundos vivos nas secções escuras */
-  if(!calmo)$$('.mudar,.meg,.faixa,.rodape,.sede').forEach(function(h){
+  if(!calmo)$$('.mudar,.meg,.faixa,.rodape,.bt-sede').forEach(function(h){
     h.classList.add('vivo-host');var v=document.createElement('span');v.className='vivo';v.setAttribute('aria-hidden','true');v.innerHTML='<i></i><i></i><i></i>';h.insertBefore(v,h.firstChild);
     if(!fino)return;var ev=null,pend=false;
     h.addEventListener('pointermove',function(e){ev=e;if(pend)return;pend=true;requestAnimationFrame(function(){pend=false;var r=h.getBoundingClientRect();v.style.setProperty('--mx',(ev.clientX-r.left)+'px');v.style.setProperty('--my',(ev.clientY-r.top)+'px');v.style.setProperty('--luz','1');});});
@@ -593,7 +608,7 @@ body::before{content:"";position:fixed;inset:-15%;z-index:-1;pointer-events:none
   }
 
   /* cartões com inclinação e luz */
-  if(fino&&!calmo)$$('.eixo,.muda li,.mos-i,.et').forEach(function(c){
+  if(fino&&!calmo)$$('.eixo,.bt:not(.bt-sede),.mos-i,.et').forEach(function(c){
     c.classList.add('tilt');var b=document.createElement('span');b.className='brilho';b.setAttribute('aria-hidden','true');c.appendChild(b);
     var max=c.classList.contains('mos-i')?3:6;
     c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.classList.add('mexe');
@@ -616,7 +631,7 @@ body::before{content:"";position:fixed;inset:-15%;z-index:-1;pointer-events:none
     if(el.classList.contains('mlista')){$$('.v[data-de]',el).forEach(function(v,k){descer(v,700+k*160);});return;}
     el.classList.add('vis');setTimeout(function(){el.classList.remove('surge','vis');el.style.removeProperty('--i');},2300);});},{rootMargin:'0px 0px -6% 0px',threshold:.12});
   var ml=document.querySelector('.mlista');if(ml)io.observe(ml);
-  ['.sec-cab','.meg-cab','.cand-media','.cand-c>*','.alvo-in>*','.muda li','.eixo','.sede-foto','.sede-c','.mos-i','.et','.faixa-t','.faixa-l','.pg-cab','.bp','.legal section'].forEach(function(sel){
+  ['.sec-cab','.meg-cab','.cand-media','.cand-c>*','.alvo-in>*','.bt','.eixo','.mos-i','.et','.faixa-t','.faixa-l','.pg-cab','.bp','.legal section'].forEach(function(sel){
     $$(sel).forEach(function(el){var ir=[].slice.call(el.parentNode.children).filter(function(x){return x.matches(sel);});el.style.setProperty('--i',Math.min(6,ir.indexOf(el)));el.classList.add('surge');io.observe(el);});
   });
 })();
